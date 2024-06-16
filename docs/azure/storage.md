@@ -73,3 +73,11 @@ az storage share create --account-name han --account-key iNy9UFd0dHcZwMlcoTth9jX
 > "version": "2022-11-02"
 > }
 ```
+
+## ![image-20240616143747337](https://han.blob.core.windows.net/typora/image-20240616143747337.png)Static Site
+
+![image-20240616125308042](https://han.blob.core.windows.net/typora/image-20240616125308042.png)
+
+The ultimate static site will be
+
+![image-20240616144320171](https://han.blob.core.windows.net/typora/image-20240616144320171.png)
