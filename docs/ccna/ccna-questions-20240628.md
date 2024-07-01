@@ -440,9 +440,9 @@ interface port-channel 1
  ip access-group 100 out  ! Apply the extended ACL outbound
 ```
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629000354152.png" alt="image-20240629063004156"  />
+<img src="https://han.blob.core.windows.net/typora/image-20240629000354152.png" alt="image-20240629063004156" style="zoom:50%;" />
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063004156.png" alt="image-20240629063004156"  />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063004156.png" alt="image-20240629063004156" style="zoom:50%;" />
 
 ### OSPF
 
@@ -586,7 +586,7 @@ Explanation:
 - A- Each virtualization solution have virtual switches (logical network), these virtual switches allows virtual machines to communicate on the network. We also assign vlan tag on these switches or make them trunk.
 - B) The main purpose of Server Virtualization is to run many VMs on the same physical server
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629051220833.png" alt="image-20240629051220833"  />
+<img src="https://han.blob.core.windows.net/typora/image-20240629051220833.png" alt="image-20240629051220833" style="zoom:50%;" />
 
 **Unique Local Address (ULA) - FC00::/8 and FD00::/8**
 
@@ -636,7 +636,7 @@ C is wrong as the purpose of FlexConnect is to provide local connectivity when t
 | Functionality without WLC           | Limited (cannot serve clients effectively) | Continues to serve clients, local switching           |
 | Control and Data Traffic Separation | Both tunneled to WLC                       | Control tunneled to WLC, data can be locally switched |
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629062058523.png" alt="image-20240629062058523"  />
+<img src="https://han.blob.core.windows.net/typora/image-20240629062058523.png" alt="image-20240629062058523" style="zoom:50%;" />
 
 **Default STP Path Costs**: Cisco switches use specific default costs based on the bandwidth of the link:
 
@@ -670,15 +670,15 @@ interface GigabitEthernet0/0
  ip ospf 1 area 0
 ```
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063729580.png" alt="image-20240629063729580" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063729580.png" alt="image-20240629063729580" style="zoom:50%;" />
 
 **Delay Calculation**: The delay value used in the metric calculation is not just the delay of the exiting interface. Instead, it is the cumulative delay of all the interfaces along the path to the destination.
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063812791.png" alt="image-20240629063812791" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063812791.png" alt="image-20240629063812791" style="zoom:50%;" />
 
 ### Configuring the NTP Client
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063857417.png" alt="image-20240629063857417"  />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063857417.png" alt="image-20240629063857417" style="zoom:50%;" />
 
 The NTP client is configured to synchronize its time with the NTP server. Here’s how to configure an NTP client:
 
@@ -692,7 +692,7 @@ ntp server <NTP_SERVER_IP>
 
 clock set 00:00:00 January 1 2020
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629064042718.png" alt="image-20240629064042718"  />
+<img src="https://han.blob.core.windows.net/typora/image-20240629064042718.png" alt="image-20240629064042718" style="zoom:50%;" />
 
 ### VPN
 
@@ -719,7 +719,7 @@ Enabling the "allow AAA Override" option on a Cisco Wireless LAN Controller (WLC
 
 **Functionality**: By enabling the AAA Override, the WLC can dynamically assign VLANs, QoS profiles, and other policies based on the information provided by the AAA server. This is crucial for implementing role-based access control and dynamic VLAN assignments.
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629065958197.png" alt="image-20240629065958197"  />
+<img src="https://han.blob.core.windows.net/typora/image-20240629065958197.png" alt="image-20240629065958197" style="zoom:50%;" />
 
 [Question](https://www.examtopics.com/discussions/cisco/view/110564-exam-200-301-topic-1-question-307-discussion): Refer to the exhibit. A network engineer must update the configuration on Switch2 so that it sends LLDP packets every minute and the information sent via LLDP is refreshed every 3 minutes. Which configuration must the engineer apply?
 
