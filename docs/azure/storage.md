@@ -8,7 +8,7 @@ This is the place where i store the public data
 
 ## Container
 
-````sh
+```sh
 > az storage container list --account-name han --account-key iNy9UFd0dHcZwMlcoTth9jXyWb53jdGlL1FdFA6ySGim3jvlJb9O2rEfO+YTh5Uu0sVUesCwpuof+AStAkFQeA== --output table
 
 Name                 Lease Status    Last Modified
@@ -19,11 +19,11 @@ hyte                                 2024-06-01T02:56:28+00:00
 personal                             2024-05-19T15:18:59+00:00
 typora                               2024-05-19T15:18:59+00:00
 webpage-suggestions                  2024-05-19T13:13:56+00:00
-````
+```
 
 That's how you can copy file
 
-````sh
+```sh
 az storage blob upload --account-name han --account-key iNy9UFd0dHcZwMlcoTth9jXyWb53jdGlL1FdFA6ySGim3jvlJb9O2rEfO+YTh5Uu0sVUesCwpuof+AStAkFQeA== --container-name typora --name logo2.svg --file ./static/img/logo.svg
 
 Finished[#############################################################]  100.0000%
@@ -40,7 +40,7 @@ Finished[#############################################################]  100.000
   "version": "2022-11-02",
   "version_id": null
 }
-````
+```
 
 ## File shares
 
