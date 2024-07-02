@@ -75,7 +75,7 @@ access-list 10 permit 209.165.200.225
 Example Configuration
 
 ```
-bashCopy codentp server 192.168.1.1
+ntp server 192.168.1.1
 ntp source Loopback0
 ntp access-group server-only 10
 ```

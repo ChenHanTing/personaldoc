@@ -299,7 +299,7 @@ ip nat inside source list NAT_TRAFFIC pool MY_NAT_POOL overload
 
 With protect mode, the only action the switch takes for a frame that violates the port security rules is to discard the frame. The switch does not change the port to an errdisabled state, does not generate messages, and does not even increment the violations counter (Official Cert Guide, V2 pg350).
 
-![](https://www.examtopics.com/assets/media/exam-media/04300/0049000001.png)
+![](https://www.examtopics.com/assets/media/exam-media/04300/0049000001.png) 
 
 Refer to the exhibit. Users on existing VLAN 100 can reach sites on the Internet. Which action must the administrator take to establish connectivity to the Internet for users in VLAN 200?
 
@@ -440,7 +440,7 @@ interface port-channel 1
  ip access-group 100 out  ! Apply the extended ACL outbound
 ```
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629000354152.png" alt="image-20240629063004156" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629000354152.png" alt="image-20240629063004156" style="zoom:50%;" /> 
 
 <img src="https://han.blob.core.windows.net/typora/image-20240629063004156.png" alt="image-20240629063004156" style="zoom:50%;" />
 
