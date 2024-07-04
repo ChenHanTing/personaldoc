@@ -4,6 +4,8 @@
 
 - 有SAE選SAE，沒有SAE選AES
 
+​	![image-20240704100444082](https://han.blob.core.windows.net/typora/image-20240704100444082.png) 
+
 ### Questions
 
 ![image-20240701083312219](https://han.blob.core.windows.net/typora/image-20240701083312219.png) 

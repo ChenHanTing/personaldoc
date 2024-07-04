@@ -18,7 +18,7 @@ sidebar_position: 50
 > **Suggested Answer:** *C* [🗳️](https://www.examtopics.com/discussions/cisco/view/52674-exam-200-301-topic-1-question-362-discussion/#)
 > From the output we can see there are Designated Router & Backup Designated Router for this OSPF domain so this is a broadcast network (point-to-point and point-to-multipoint networks do not elect DR & BDR).
 > By default, the timers on a broadcast network (Ethernet, point-to-point and point-to-multipoint) are 10 seconds hello and 40 seconds dead. The timers on a non- broadcast network are 30 seconds hello 120 seconds dead.
-> From the line ג€Neighbor Count is 3ג€, we learn there are four OSPF routers in this OSPF domain.
+> From the line "Neighbor Count is 3", we learn there are four OSPF routers in this OSPF domain.
 
 other good answers
 
@@ -229,7 +229,7 @@ The AD of eBGP (20) is smaller than that of OSPF (110) so the route to 10.10.13.
 
 - B. lightweight 🧡
 
-  A Lightweight Access Point (LAP) is an AP that is designed to be connected to a wireless LAN (WLAN) controller (WLC). APs are ג€lightweight,ג€ which means that they cannot act independently of a wireless LAN controller (WLC). The WLC manages the AP configurations and firmware. The APs are ג€zero touchג€ deployed, and individual configuration of APs is not necessary.
+  A Lightweight Access Point (LAP) is an AP that is designed to be connected to a wireless LAN (WLAN) controller (WLC). APs are "lightweight," which means that they cannot act independently of a wireless LAN controller (WLC). The WLC manages the AP configurations and firmware. The APs are "zero touch" deployed, and individual configuration of APs is not necessary.
 
 - C. mobility express
 
