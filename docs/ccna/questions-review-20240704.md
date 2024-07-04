@@ -4,7 +4,13 @@
 
 ## Important Concepts
 
-The data plane, also known as the forwarding plane, is responsible for the actual movement of packets through the network. It handles tasks such as forwarding packets based on established rules and making real-time decisions about packet handling.
+1. The data plane, also known as the forwarding plane, is responsible for the actual movement of packets through the network. It handles tasks such as forwarding packets based on established rules and making real-time decisions about packet handling.
+
+2. 解題方法: 截圖標記眼睛比較不會花
+
+   ![image-20240704162934002](https://han.blob.core.windows.net/typora/image-20240704162934002.png) 
+
+   
 
 
 
@@ -165,11 +171,15 @@ Switch2# write memory
 
 The answer is C
 
-If the EtherChannel does not need to be in trunk mode and can be in access mode, the previous configurations are correct. 
-
-Given that the initial scenario did not specify the need for multiple VLANs, it might have implied access mode. However, typically for switch-to-switch connections, trunk mode is more common
+If the EtherChannel does not need to be in trunk mode and can be in access mode, the previous configurations are correct. Given that the initial scenario did not specify the need for multiple VLANs, it might have implied access mode. However, typically for switch-to-switch connections, trunk mode is more common
 
 So it isn't really necessary to be trunk or access mode
+
+![image-20240704164824848](https://han.blob.core.windows.net/typora/image-20240704164824848.png) 
+
+**SW1** interfaces are configured with `channel-group 1 mode on`, which forces the port to form an EtherChannel without using LACP. Since SW1 is using `on` mode (which does not participate in LACP), and SW2 is using `active` mode, they are not compatible. To form an LACP EtherChannel, both sides must use compatible LACP modes.
+
+By changing SW1's mode to `active` or `passive`, it becomes compatible with SW2's `active` mode, enabling LACP negotiation and forming the EtherChannel.
 
 ![image-20240704111006068](https://han.blob.core.windows.net/typora/image-20240704111006068.png) 
 
@@ -286,3 +296,165 @@ R1(config)# ip ssh version 2
 R1(config)# end
 R1# write memory
 ```
+
+![image-20240704161740578](https://han.blob.core.windows.net/typora/image-20240704161740578.png) 
+
+**Password Encryption**: RADIUS encrypts the password field in the access-request packet to protect it from being intercepted and read by unauthorized parties. This encryption uses a shared secret between the RADIUS client and the RADIUS server along with the Request Authenticator field to encrypt the password.
+
+**Username and Other Fields**: The username and other fields are not encrypted by default in RADIUS. They are sent in plaintext.
+
+![image-20240704162614632](https://han.blob.core.windows.net/typora/image-20240704162614632.png) 
+
+[Hide Answer](https://www.examtopics.com/discussions/cisco/view/83756-exam-200-301-topic-1-question-107-discussion/#): What is a function of an endpoint on a network?
+
+- A. provides wireless services to users in a building
+- B. connects server and client device to a network **Most Voted**
+- C. allows users to record data and transmit to a file server **Most Voted**
+- D. forwards traffic between VLANs on a network
+
+**Suggested Answer:** *C* [🗳️](https://www.examtopics.com/discussions/cisco/view/83756-exam-200-301-topic-1-question-107-discussion/#)
+An endpoint is a remote computing device that communicates back and forth with a network to which it is connected. Examples of endpoints include:
+Desktops, Laptops, Smartphones, Tablets, Servers, Workstations
+Internet-of-things (IoT) devices
+
+![image-20240704163944872](https://han.blob.core.windows.net/typora/image-20240704163944872.png) 
+[Hide Answer](https://www.examtopics.com/discussions/cisco/view/86483-exam-200-301-topic-1-question-451-discussion/#): Refer to the exhibit. Which route must be configured on R1 so that OSPF routing is used when OSPF is up, but the server is still reachable when OSPF goes down?
+
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0036100001.png) 
+
+- A. ip route 10.1.1.10 255.255.255.255 gi0/0 125 **Most Voted**
+- B. ip route 10.1.1.0 255.255.255.0 172.16.2.2 100
+- C. ip route 10.1.1.0 255.255.255.0 gi0/1 125
+- D. ip route 10.1.1.10 255.255.255.255 172.16.2.2 100
+
+**Suggested Answer:** *A* [🗳️](https://www.examtopics.com/discussions/cisco/view/86483-exam-200-301-topic-1-question-451-discussion/#)
+This is an example of a floating static route when the Administrative Distance must be greater than the primary route. Currently the OSPF AD for the route is 110, so if that route was to go away then this route with an AD of 125 would be used.
+
+![image-20240704164100355](https://han.blob.core.windows.net/typora/image-20240704164100355.png) 
+
+當時下課的時候有嚇一跳
+
+![image-20240704164201976](https://han.blob.core.windows.net/typora/image-20240704164201976.png) 
+
+![image-20240704165145670](https://han.blob.core.windows.net/typora/image-20240704165145670.png)
+
+![image-20240704165505907](https://han.blob.core.windows.net/typora/image-20240704165505907.png) 
+
+Lightweight APs are typically connected to the network using access ports because each AP usually belongs to a single VLAN that carries all of its management and data traffic back to the WLC. The WLC handles VLAN tagging and distribution of the traffic to the appropriate VLANs.
+
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0039800001.png) 
+
+Refer to the exhibit. All interfaces are configured with duplex auto and ip ospf network broadcast. Which configuration allows routers R14 and R86 to form an
+OSPFv2 adjacency and act as a central point for exchanging OSPF information between routers?
+
+Option A:
+
+```plaintext
+R14#
+interface FastEthernet0/0
+ ip address 10.73.65.65 255.255.255.252
+ ip ospf priority 255
+ ip mtu 1500
+router ospf 10
+ router-id 10.10.1.14
+ network 10.10.1.14 0.0.0.0 area 0
+ network 10.73.65.64 0.0.0.3 area 0
+
+R86#
+interface FastEthernet0/0
+ ip address 10.73.65.66 255.255.255.252
+ ip mtu 1400 ❌
+router ospf 10
+ router-id 10.10.1.86
+ network 10.10.1.86 0.0.0.0 area 0
+ network 10.73.65.64 0.0.0.3 area 0
+```
+
+Option B: ❓❓❓
+
+```plaintext
+R14#
+interface Loopback0
+ ip ospf 10 area 0
+interface FastEthernet0/0
+ ip address 10.73.65.65 255.255.255.252
+ ip ospf 10 area 0
+ ip mtu 1500
+router ospf 10
+ ip ospf priority 255
+ router-id 10.10.1.14
+
+R86#
+interface Loopback0
+ ip ospf 10 area 0
+interface FastEthernet0/0
+ ip address 10.73.65.66 255.255.255.252
+ ip ospf 10 area 0
+ ip mtu 1500
+router ospf 10
+ router-id 10.10.1.86
+```
+
+Option C:
+
+```plaintext
+R14#
+interface FastEthernet0/0
+ ip address 10.73.65.65 255.255.255.252
+ ip ospf priority 0 ❌
+ ip mtu 1500
+router ospf 10
+ router-id 10.10.1.14
+ network 10.10.1.14 0.0.0.0 area 0
+ network 10.73.65.64 0.0.0.3 area 0
+
+R86#
+interface FastEthernet0/0
+ ip address 10.73.65.66 255.255.255.252
+ ip mtu 1500
+router ospf 10
+ router-id 10.10.1.86
+ network 10.10.1.86 0.0.0.0 area 0
+ network 10.73.65.64 0.0.0.3 area 0
+```
+
+Option D:
+
+```plaintext
+R14#
+interface Loopback0
+ ip ospf 10 area 0
+interface FastEthernet0/0
+ ip address 10.73.65.65 255.255.255.252
+ ip ospf priority 255
+ ip ospf 10 area 0
+ ip mtu 1500
+router ospf 10
+ router-id 10.10.1.14
+
+R86#
+interface Loopback0
+ ip ospf 10 area 0
+interface FastEthernet0/0
+ ip address 10.73.65.66 255.255.255.252
+ ip ospf 10 area 0
+ ip mtu 1500
+router ospf 10
+ router-id 10.10.1.86
+```
+
+Explanation:
+
+- **Option A**: R14 is configured with `ip ospf priority 255`, making it the designated router (DR). However, R86 has `ip mtu 1400`, which does not match R14's `ip mtu 1500`, potentially causing OSPF adjacency issues.
+- **Option B**: Both R14 and R86 have `ip ospf 10 area 0` configured on the Loopback interfaces and `ip mtu 1500` on the FastEthernet interfaces, but this configuration lacks explicit OSPF priority.
+- **Option C**: R14 has `ip ospf priority 0`, making it ineligible to be the DR, while R86 has the correct OSPF configuration and MTU size.
+- **Option D**: Both routers have `ip ospf 10 area 0` on the Loopback interfaces, `ip ospf priority 255` on R14, and matching `ip mtu 1500`. This configuration correctly sets R14 as the DR and allows both routers to form an adjacency.
+
+**Option D** is the best choice because it correctly configures R14 with a higher OSPF priority, ensuring it becomes the DR, and ensures matching MTU sizes on both routers, facilitating OSPF adjacency formation.
+
+![image-20240704171125370](https://han.blob.core.windows.net/typora/image-20240704171125370.png) 
+
+![image-20240704171228714](https://han.blob.core.windows.net/typora/image-20240704171228714.png) 
+
+![image-20240704171609899](https://han.blob.core.windows.net/typora/image-20240704171609899.png) 
+
