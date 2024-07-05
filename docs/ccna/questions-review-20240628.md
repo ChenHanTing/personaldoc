@@ -442,7 +442,7 @@ interface port-channel 1
 
 <img src="https://han.blob.core.windows.net/typora/image-20240629000354152.png" alt="image-20240629063004156" style="zoom:50%;" /> 
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063004156.png" alt="image-20240629063004156" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063004156.png" alt="image-20240629063004156" style="zoom:50%;" /> 
 
 ### OSPF
 

@@ -230,7 +230,7 @@ The number 100 was used as an example and is not special in any way. You can cho
 
 ## LAB 3
 
-<img src="/Users/han/typora-files/image-20240630105234494.png" alt="image-20240630105234494" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240630105234494.png" alt="image-20240630105234494" style="zoom:50%;" /> 
 
 > There are 2 router connect together with 2 lines. one is for dp and the other is for bdp. R1 connects to R3 and R3 connects to the internet. R2 connects to a switch which i think this switch will connnect to one PC and one VoIP. How can i provision?
 
