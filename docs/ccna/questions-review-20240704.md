@@ -1,8 +1,6 @@
 # Questions Completed on 2024-07-04
 
-
-
-## Important Concepts
+### Important Concepts
 
 1. The data plane, also known as the forwarding plane, is responsible for the actual movement of packets through the network. It handles tasks such as forwarding packets based on established rules and making real-time decisions about packet handling.
 
@@ -12,9 +10,7 @@
 
    
 
-
-
-## Questions
+### Questions
 
 ![image-20240704082402680](https://han.blob.core.windows.net/typora/image-20240704082402680.png) 
 
@@ -24,16 +20,20 @@
 
 ![image-20240704082558935](https://han.blob.core.windows.net/typora/image-20240704082558935.png) 
 
+**Low-Latency Queuing (LLQ):**
+
+- **Description**: LLQ is a prioritization method that combines the capabilities of Class-Based Weighted Fair Queuing (CBWFQ) with strict priority queuing.
+- **Purpose**: It is designed to provide guaranteed bandwidth and low delay for critical traffic such as interactive voice and video.
+- **How It Works**: LLQ places high-priority traffic into a strict priority queue, ensuring that this traffic is sent first and experiences minimal delay. This is essential for applications like VoIP (Voice over IP) and video conferencing, where delays and jitter can significantly affect quality.
+
 ![image-20240704082823303](https://han.blob.core.windows.net/typora/image-20240704082823303.png) 
 
-How does Rapid PVST+ create a fast loop-free network topology?
+[Question](https://www.examtopics.com/discussions/cisco/view/101139-exam-200-301-topic-1-question-838-discussion/#): How does Rapid PVST+ create a fast loop-free network topology?
 
 - A. It uses multiple active paths between end stations.
 - B. It requires multiple links between core switches.
 - C. It maps multiple VLANs into the same spanning-tree instance.
 - D. It generates one spanning-tree instance for each VLAN. **Most Voted**
-
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/101139-exam-200-301-topic-1-question-838-discussion/#)
 
 **Suggested Answer:** *D* [🗳️](https://www.examtopics.com/discussions/cisco/view/101139-exam-200-301-topic-1-question-838-discussion/#)  
 
@@ -57,7 +57,7 @@ Answer correct:
 
 - **Layer 2** is the correct answer because it is where the authentication process is technically implemented and executed.
 
-- **SSID** is not the correct answer because it is used for network identification and selection, not for the actual authentication process. 
+- **SSID** is not the correct answer because it is used for network **identification** and selection, not for the actual authentication process. 
 
 ​	![image-20240704101601829](https://han.blob.core.windows.net/typora/image-20240704101601829.png) 
 
@@ -67,15 +67,13 @@ Answer correct:
 
 The answer is wrong
 
-What are two characteristics of a public cloud implementation? (Choose two.)
+[Question](https://www.examtopics.com/discussions/cisco/view/97442-exam-200-301-topic-1-question-775-discussion/#): What are two characteristics of a public cloud implementation? (Choose two.)
 
 - A. It is owned and maintained by one party, but it is shared among multiple organizations **Most Voted**
 - B. It enables an organization to fully customize how it deploys network resources
 - C. It provides services that are accessed over the Internet **Most Voted**
 - D. It is a data center on the public Internet that maintains cloud services for only one company
 - E. It supports network resources from a centralized third-party provider and privately-owned virtual resources
-
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/97442-exam-200-301-topic-1-question-775-discussion/#)
 
 **Suggested Answer:** *AC* [🗳️](https://www.examtopics.com/discussions/cisco/view/97442-exam-200-301-topic-1-question-775-discussion/#)
 

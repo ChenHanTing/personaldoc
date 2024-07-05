@@ -130,13 +130,13 @@ interface GigabitEthernet0/0
  ip address 172.16.0.5 255.255.255.0
  duplex auto
  speed auto
- ip nat inside
+ ✅ ip nat inside
 !
 interface GigabitEthernet0/1
  ip address 209.165.202.130 255.255.255.224
  duplex auto
  speed auto
- ip nat outside
+ ✅ ip nat outside
 !
 ✅ access-list 1 permit 172.16.0.0 0.0.0.255 
 !
@@ -158,7 +158,7 @@ interface range GigabitEthernet1/1 - 2
  switchport access vlan 2
  channel-group 1 mode active
 !
-interface Port-channel1
+interface Port-channel 1
  switchport
  switchport mode access
  switchport access vlan 2
@@ -173,11 +173,90 @@ interface range GigabitEthernet1/1 - 2
  switchport access vlan 2
  channel-group 1 mode passive
 !
-interface Port-channel1
+interface Port-channel 1
  switchport
  switchport mode access
  switchport access vlan 2
 ```
+
+**Access Port Configuration**:
+
+```
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+```
+
+**Trunk Port Configuration**:
+
+```
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# switchport trunk allowed vlan 10,20,30
+```
+
+[Related Lab Task](https://www.examtopics.com/discussions/cisco/view/101207-exam-200-301-topic-1-question-1041-discussion/#): Physical connectivity is implemented between the two Layer 2 switches, and the network connectivity between them must be configured.
+
+1. Configure an LACP EtherChannel and number it as 44; configure it between switches SW1 and SW2 using interfaces Ethemet0/0 and Ethernet0/1 on both sides. The LACP mode must match on both ends.
+2. Configure the EtherChannel as a trunk link.
+3. Configure the trunk link with 802.1q tags.
+4. Configure VLAN 'MONITORING' as the untagged VLAN of the EtherChannel.
+
+![](https://img.examtopics.com/200-301/image107.png) 
+
+SW1 Configuration:
+
+```
+SW1# configure terminal
+SW1(config)# interface range ethernet0/0 - 1
+SW1(config-if-range)# channel-group 44 mode active
+SW1(config-if-range)# exit
+SW1(config)# interface port-channel 44
+SW1(config-if)# switchport trunk encapsulation dot1q
+SW1(config-if)# switchport mode trunk
+SW1(config-if)# exit
+SW1(config)# vlan 100
+SW1(config-vlan)# name MONITORING
+SW1(config-vlan)# exit
+SW1(config)# interface port-channel 44
+SW1(config-if)# switchport trunk native vlan 100
+SW1(config-if)# exit
+```
+
+SW2 Configuration:
+
+```
+SW2# configure terminal
+SW2(config)# interface range ethernet0/0 - 1
+SW2(config-if-range)# channel-group 44 mode active
+SW2(config-if-range)# exit
+SW2(config)# interface port-channel 44
+SW2(config-if)# switchport trunk encapsulation dot1q
+SW2(config-if)# switchport mode trunk
+SW2(config-if)# exit
+SW2(config)# vlan 100
+SW2(config-vlan)# name MONITORING
+SW2(config-vlan)# exit
+SW2(config)# interface port-channel 44
+SW2(config-if)# switchport trunk native vlan 100
+SW2(config-if)# exit
+```
+
+Assuming VLAN ID for 'MONITORING' is 100 (replace 100 with the actual VLAN ID if different). 
+What if we need to find a real vlan instead of assuming a vlan
+
+To find the actual VLAN ID for a VLAN named "MONITORING," you can use the `show vlan brief` command on a Cisco switch. This command will list all VLANs along with their IDs and names. Here’s how you can do it:
+
+````txt
+SW1# show vlan brief
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gi0/1, Gi0/2
+10   MANAGEMENT                       active    Gi0/3, Gi0/4
+20   SALES                            active    Gi0/5, Gi0/6
+100  MONITORING                       active    Gi0/7, Gi0/8
+````
+
+
 
 ![image-20240705095104339](https://han.blob.core.windows.net/typora/image-20240705095104339.png) 
 
@@ -284,7 +363,7 @@ Refer to the exhibit. Users need to connect to the wireless network with IEEE 80
 - C. Enable Fast Transition and select the FT PSK option.
 - D. Select the WPA Policy option with the CCKM option.
 
-![image-20240705110614090](https://han.blob.core.windows.net/typora/image-20240705110614090.png)
+![image-20240705110614090](https://han.blob.core.windows.net/typora/image-20240705110614090.png) 
 
 > I believe that in the WLC GUI, generally, **you cannot simultaneously enable both 802.1x and PSK authentication methods for the same WLAN, it would have to be on separate WLANs.** Therefore, as the PSK method is already used, we should not change it to 802.1x/EAP, and legacy devices that do not have the 802.11r feature would just not take advantage of FT fast roaming with the initial handshake already pre-established with another AP via the 802.11r protocol, having to go through the entire reauthentication and reassociation process when roaming, creating a delay, but the devices it supports would take advantage of this feature (FT) while they roam the company's floors getting almost instantaneous associations when needs roaming. 
 
@@ -358,3 +437,6 @@ it starts with `ipv6` and it's in global config mode
 
 ![image-20240705134816303](https://han.blob.core.windows.net/typora/image-20240705134816303.png) 
 
+![image-20240705162343744](https://han.blob.core.windows.net/typora/image-20240705162343744.png) 
+
+紅色是答錯的，橘色是答對的
