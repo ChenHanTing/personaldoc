@@ -187,11 +187,10 @@ By changing SW1's mode to `active` or `passive`, it becomes compatible with SW2'
 
 ![image-20240704111253211](https://han.blob.core.windows.net/typora/image-20240704111253211.png)
 
-Many bridges
+**Bridge Mode (Mesh APs)**
+APs in Bridge Mode act as wireless bridges connecting two or more wired networks. They are often used in mesh network deployments.
 
 ![image-20240704111429418](https://han.blob.core.windows.net/typora/image-20240704111429418.png) 
-
-worded
 
 ![image-20240704112055780](https://han.blob.core.windows.net/typora/image-20240704112055780.png) 
 
@@ -211,7 +210,7 @@ It will send a DHCPDISCOVER message to locate a DHCP server and obtain an IP add
 Public clouds are provided by third-party providers who own and manage the physical infrastructure. Users can deploy virtual resources on this infrastructure.
 
 **C. It is owned and maintained by one party, but it is shared among multiple organizations**:
-While it is true that a public cloud is owned and maintained by a third-party provider and shared among multiple organizations, the question asks for characteristics specific to a public cloud implementation. The selected correct answers provide a more precise definition.
+While it is true that a public cloud is owned and maintained by a third-party provider and shared among multiple organizations, the question asks for characteristics **specific to a public cloud implementation.** The selected correct answers provide a more precise definition.
 
 ![image-20240704114224489](https://han.blob.core.windows.net/typora/image-20240704114224489.png) 
 
