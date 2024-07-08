@@ -373,9 +373,9 @@ Summary of the Configuration:
 
 ![](https://img.examtopics.com/200-301/image146.png) 
 
-1. Configure reachability to the switch SW1 LAN subnet in router R2.
-2. Configure default reachability to the Internet subnet in router R1.
-3. Configure a single static route in router R2 to reach to the Internet subnet considering both redundant links between routers R1 and R2. A default route is NOT allowed in router R2.
+1. Configure **reachability** to the switch SW1 LAN subnet in router R2.
+2. Configure **default reachability** to the Internet subnet in router R1.
+3. Configure a single static route in **router R2** to reach to the Internet subnet considering both redundant links between routers R1 and R2. A **default route** is NOT allowed in router R2.
 4. Configure a static route in router R1 toward the switch SW1 LAN subnet where the primary link must be through Ethernet0/1, and the backup link must be through Ethernet0/2 using a floating route. Use the minimal administrative distance value when required.
 
 Solution: Here is the step-by-step solution to configure the routers based on the provided tasks:
@@ -389,7 +389,7 @@ R2(config)# ip route 192.168.0.0 255.255.255.0 10.10.31.1
 2. Configure default reachability to the Internet subnet in router R1.
 
 ```plaintext
-R1(config)# ip route 0.0.0.0 0.0.0.0 10.10.12.130
+R1(config)# ip route 0.0.0.0 0.0.0.0 10.10.13.3
 ```
 
 3. Configure a single static route in router R2 to reach the Internet subnet considering both redundant links between routers R1 and R2. A default route is NOT allowed in router R2.
@@ -950,8 +950,8 @@ ping 2001:db8:acca::1
 3. Configure SW-2 E0/2 port to permit only VLAN 6
 4. Configure both SW-3 and SW-4 ports e0/0 and e0/1 for link aggregation using the industry standard protocol with the following requirements:
 
-- SW-3 ports must immediately negotiate the aggregation protocol
-- SW-4 ports must not initiate the negotiation for the aggregation protocol
+- SW-3 ports **must immediately negotiate** the aggregation protocol
+- SW-4 ports **must not initiate the negotiation** for the aggregation protocol
 - Use the designated number assignment
 
 To configure the switches based on the provided requirements, we need to perform several specific configurations on SW-1, SW-2, SW-3, and SW-4. Below are the detailed steps:
@@ -1053,7 +1053,7 @@ Ensure to save the configuration on all switches using the `write memory` comman
 
 1. Configure SW-2 and SW-3 ports E0/0 to use the industry standard encapsulation method for trunking and only tag VLAN 10
 2. Configure SW-2 and SW-3 ports E0/0 to send and receive untagged traffic over VLAN 11
-3. Configure SW-2 and SW-3 ports E0/2 and E0/3 to use the industry standard encapsulation method for trunking and tag all VLANS
+3. Configure SW-2 and SW-3 ports E0/2 and E0/3 to use the **industry standard encapsulation method for trunking** and tag all VLANS
 4. Configure SW-2 and SW-3 ports E0/2 and E0/3 for link aggregation using the industry standard protocol with the following requirements:
 
 - SW-2 ports must not initiate the negotiation for the aggregation protocol
@@ -1066,17 +1066,21 @@ Step 1: Configure SW-2 and SW-3 ports E0/0 to use the industry standard encapsul
 
 ```plaintext
 SW-2(config)# interface e0/0
-SW-2(config-if)# switchport trunk encapsulation dot1q
+❗ SW-2(config-if)# switchport trunk encapsulation dot1q
 SW-2(config-if)# switchport mode trunk
 SW-2(config-if)# switchport trunk allowed vlan 10
 SW-2(config-if)# exit
 
 SW-3(config)# interface e0/0
-SW-3(config-if)# switchport trunk encapsulation dot1q
+❗ SW-3(config-if)# switchport trunk encapsulation dot1q
 SW-3(config-if)# switchport mode trunk
 SW-3(config-if)# switchport trunk allowed vlan 10
 SW-3(config-if)# exit
 ```
+
+![image-20240708144720759](https://han.blob.core.windows.net/typora/image-20240708144720759.png) 
+
+❗❗❗ The error i'm encountering indicates that the `switchport trunk encapsulation dot1q` command is not recognized. This might happen for a few reasons, primarily related to the switch model and IOS version i'm using. On some Cisco switches, particularly newer models, the trunk encapsulation is fixed to `dot1q` and does not need to be specified explicitly.
 
 Step 2: Configure SW-2 and SW-3 ports E0/0 to send and receive untagged traffic over VLAN 11
 
@@ -1095,16 +1099,18 @@ Step 3: Configure SW-2 and SW-3 ports E0/2 and E0/3 to use the industry standard
 ```plaintext
 SW-2(config)# interface range e0/2 - 3
 SW-2(config-if-range)# switchport trunk encapsulation dot1q
-SW-2(config-if-range)# switchport mode trunk
-SW-2(config-if-range)# switchport trunk allowed vlan all
+❌SW-2(config-if-range)# switchport mode trunk
+❌SW-2(config-if-range)# switchport trunk allowed vlan all
 SW-2(config-if-range)# exit
 
 SW-3(config)# interface range e0/2 - 3
 SW-3(config-if-range)# switchport trunk encapsulation dot1q
-SW-3(config-if-range)# switchport mode trunk
-SW-3(config-if-range)# switchport trunk allowed vlan all
+❌SW-3(config-if-range)# switchport mode trunk
+❌SW-3(config-if-range)# switchport trunk allowed vlan all
 SW-3(config-if-range)# exit
 ```
+
+❗ By default, when you configure a switch port as a trunk, it will allow all VLANs to pass through unless explicitly restricted. The command `switchport trunk allowed vlan all` is essentially redundant because it specifies the default behavior.
 
 Step 4: Configure SW-2 and SW-3 ports E0/2 and E0/3 for link aggregation using the industry standard protocol with the given requirements
 
@@ -1163,7 +1169,7 @@ Verify Configuration
 
 1. All traffic sent from R3 to the R1 Loopback address must be configured for NAT on R2. All source addresses must be translated from R3 to the IP address of Ethernet0/0 on R2, while using only a standard access list named PUBNET. To verify, a ping must be successful to the R1 Loopback address sourced from R3. Do not use NVI NAT configuration.
 2. Configure R1 as an NTP server and R2 as a client, not as a peer, using the IP address of the R1 Ethernet0/2 interface. Set the clock on the NTP server for midnight on May 1, 2018.
-3. Configure R1 as a DHCP server for the network 10.1.3.0/24 in a pool named NETPOOL. Using a single command, exclude addresses 1 - 10 from the range. Interface Ethernet0/2 on R3 must be issued the IP address of 10.1.3.11 via DHCP.
+3. Configure R1 as a DHCP server for the network 10.1.3.0/24 in a ✔**pool named NETPOOL**. Using a single command, exclude addresses 1 - 10 from the range. Interface Ethernet0/2 on R3 must be issued the IP address of 10.1.3.11 via DHCP.
 4. Configure SSH connectivity from R1 to R3, while excluding access via other remote connection protocols. Access for user netadmin and password N3t4ccess must be set on router R3 using RSA and 1024 bits. Verify connectivity using an SSH session from router R1 using a destination address of 10.1.3.11. Do NOT modify console.
 
 General Overview
@@ -1187,7 +1193,7 @@ R1(config)# ntp master 1
 R2(config)# ntp server 10.1.3.1
 
 DHCP:
-R1(config)# ip dhcp pool NETPOOL
+R1(config)# ip dhcp pool👀 NETPOOL
 R1(dhcp-config)# network 10.1.3.0 255.255.255.0
 R1(config)# exit
 R1(config)# ip dhcp excluded-address 10.1. 3.1 10.1.3.10
@@ -1199,14 +1205,24 @@ R3(config)# username netadmin password N3t4ccess
 R3(config)# line vty 0 4
 R3(config-line)# login local
 R3(config-line)# exit
+R3(config)# host R3
 R3(config)# ip domain-name cisco.com
 R3(config)# crypto key generate rsa
+
+✨SSH (abbreviated command version):
+R3(config)# host R3
+R3(config)# user netadmin pass N3t4ccess
+R3(config)# line vty 0 4
+R3(config-line)# log loc
+R3(config-line)# exit
+R3(config)# ip dom-name cisco.com
+R3(config)# cry key gen rsa mod 2048
 ````
 
 NAT:
 
 ````txt
-R2(config)# ip access list standard PUBNET
+R2(config)# ip access-list standard PUBNET
 R2(config-std-nacl)# permit 10.2.3.3
 R2(config-std-nacl)# permit 10.1.3.11
 R2(config-std-nacl)# permit 192.168.3.1
@@ -1353,12 +1369,14 @@ Step 1: Configure Static Routes on R1
 
 2. **Add Static Route for Primary Path (via R2)**:
    ```shell
-   R1(config)# ip route 10.0.41.0 255.255.255.0 10.0.12.3
+   ❌R1(config)# ip route 10.0.41.0 255.255.255.0 10.0.12.3
+   ✅R1(config)# ip route 10.0.41.10 255.255.255.255 e0/0
    ```
-
+   
 3. **Add Static Route for Secondary Path (via R3)**:
    ```shell
-   R1(config)# ip route 10.0.41.0 255.255.255.0 10.0.13.2 10
+   ❌ R1(config)# ip route 10.0.41.0 255.255.255.0 10.0.13.2 10
+   ✅R1(config)# ip route 10.0.41.10 255.255.255.255 e0/1
    ```
 
 Step 2: Configure Default Route on R1
@@ -1513,14 +1531,30 @@ Task 2: Modify the Named ACL (INTERNET_ACL)
    R1(config)# ip access-list extended INTERNET_ACL
    R1(config-ext-nacl)# permit tcp 172.16.0.0 0.0.255.255 any eq https
    ```
+
 2. **Allow Telnet Only for VLAN 101**:
    ```shell
    R1(config-ext-nacl)# permit tcp any 172.16.101.0 0.0.0.255 eq telnet
    ```
+
+   To reflect the requirements of allowing HTTPS traffic from the 172.16.0.0/16 subnet and Telnet traffic to the 172.16.101.0/24 subnet on a Cisco device, you would configure an extended access control list (ACL) like this
+
+   ````text
+   R1# configure terminal
+   R1(config)# ip access-list extended INTERNET_ACL
+   R1(config-ext-nacl)# permit tcp 172.16.0.0 0.0.255.255 any eq 443
+   R1(config-ext-nacl)# permit tcp any 172.16.101.0 0.0.0.255 eq 23
+   R1(config-ext-nacl)# deny ip any any log
+   ````
+
+   
+
 3. **Restrict All Other Traffic and Log Details**:
+
    ```shell
    R1(config-ext-nacl)# deny ip any any log
    ```
+
 4. **Apply ACL on R1**:
    ```shell
    R1# configure terminal
@@ -1552,17 +1586,28 @@ Summary of Commands with Prompts
 
 **Sw103 Configuration**:
 
-```shell
+```plaintext
 Switch103# enable
 Switch103# configure terminal
 Switch103(config)# username devnet privilege 15 algorithm-type sha256 secret access8cli
 Switch103(config)# line vty 0 4
 Switch103(config-line)# login local
+Switch103(config-line)# transport input telnet
+Switch103(config-line)# exit
+
+! abbreviated version
+Switch103# en
+Switch103# conf t
+Switch103(config)# username devnet privilege 15 algorithm-type sha256 secret access8cli
+Switch103(config)# line vty 0 4
+Switch103(config-line)# login loc
+Switch103(config-line)# transp input telnet
+Switch103(config-line)# exit
 ```
 
 **INTERNET_ACL on R1**:
 
-```shell
+```plaintext
 R1# configure terminal
 R1(config)# ip access-list extended INTERNET_ACL
 R1(config-ext-nacl)# permit tcp 172.16.0.0 0.0.255.255 any eq https
@@ -1574,7 +1619,7 @@ R1(config-if)# ip access-group INTERNET_ACL in
 
 **Sw101 DHCP Snooping Configuration**:
 
-```shell
+```plaintext
 Switch101# configure terminal
 Switch101(config)# ip dhcp snooping
 Switch101(config)# ip dhcp snooping vlan 101

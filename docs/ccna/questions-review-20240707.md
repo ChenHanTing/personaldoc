@@ -31,7 +31,7 @@ Router(config-line)# login local
 To verify the configuration, you can use the ping command to ensure connectivity between the
 routers.
 
-![image-20240707183223929](/Users/han/typora-files/image-20240707183223929.png) 
+![image-20240707183223929](https://img.examtopics.com/200-301/image119.png) 
 
  
 
