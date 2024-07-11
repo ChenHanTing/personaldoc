@@ -173,7 +173,7 @@ VLAN Name                             Status    Ports
 
 In the example above, the VLAN ID for "MONITORING" is `100`.
 
-❗❗❗ Notion 1.  Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
+❗ Notion 1.  Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
 
 ````txt
 SW# configure terminal
@@ -384,10 +384,6 @@ SW1(config-vlan)# exit
 
 SW2(config)# vlan 12
 SW2(config-vlan)# name Compute
-SW2(config-vlan)# exit
------ no necessary -----
-SW2(config)# vlan 34
-SW2(config-vlan)# name Telephony
 SW2(config-vlan)# exit
 ```
 
@@ -619,7 +615,7 @@ end
 1.
 sw-2#conf t
 sw-2(config)#vlan 20
-sw-2(config-vlan)#aname SERVER1
+sw-2(config-vlan)#name SERVER1
 sw-2(config-vlan)#exit
 sw-2(config)#vlan 30
 sw-2(config-vlan)#name SALES
@@ -627,15 +623,15 @@ sw-2(config-vlan)#exit
 
 2.
 sw-2(config)#interface ETH0/2
-sw-2(config-if)#sw-1port mode access
-sw-2(config-if)#sw-1port access vlan 20
+sw-2(config-if)#sw mode access
+sw-2(config-if)#sw access vlan 20
 sw-2(config-if)#no sh
 sw-2(config-if)#exit
 
 3
 sw-2(config)#interface ETH0/3
-sw-2(config-if)#sw-1port mode access
-sw-2(config-if)#sw-1port access vlan 30
+sw-2(config-if)#sw mode access
+sw-2(config-if)#sw access vlan 30
 sw-2(config-if)#no sh
 sw-2(config-if)#end
 sw-2#wr
@@ -902,14 +898,10 @@ This configuration sets up link aggregation (EtherChannel) on these ports with n
 
 1. Configure R1 and R2 Router IDs using the interface IP addresses from the link that is shared between them.
 2. Configure the R2 links with a max value facing R1 and R3. R2 must become the DR. R1 and R3 links facing R2 must remain with the default OSPF configuration for DR election. Verify the configuration after clearing the OSPF process.
-3. Using a host wildcard mask, configure all three routers to advertise their respective Loopback1 networks.
+3. Using a host wildcard mask, configure all three routers to **advertise their respective Loopback1** networks.
 4. Configure the link between R1 and R3 to disable their ability to add other OSPF routers.
 
-實驗題也有出現過
-
- Here are the steps to configure the given tasks on the routers:
-
-Step 1: Configure Router IDs
+**Step 1: Configure Router IDs**
 For R1 and R2, configure the Router IDs using the interface IP addresses from the link shared between them (10.10.12.1 and 10.10.12.2).
 
 ```bash
@@ -922,7 +914,7 @@ R2(config)# router ospf 1
 R2(config-router)# router-id 10.10.12.2
 ```
 
- Step 2: Configure R2 as DR
+**Step 2: Configure R2 as DR**
 Set the OSPF priority to the maximum value (255) on R2 interfaces facing R1 and R3.
 
 ```bash
@@ -938,7 +930,7 @@ Verify the configuration after clearing the OSPF process  on all routers to forc
 R2# clear ip ospf process
 ```
 
-Step 3: Advertise Loopback Networks
+**Step 3: Advertise Loopback Networks**
 Use a host wildcard mask to advertise the Loopback1 networks on all three routers.
 
 ```bash
@@ -956,7 +948,7 @@ R3(config)# router ospf 1
 R3(config-router)# network 192.168.3.3 0.0.0.0 area 0
 ```
 
-Step 4: Configure the Link Between R1 and R3 to Disable Adding Other OSPF Routers
+**Step 4: Configure the Link Between R1 and R3 to Disable Adding Other OSPF Routers**
 Use the `ip ospf network point-to-point` command to configure the link between R1 and R3 to disable adding other OSPF routers.
 
 ```bash
@@ -1585,8 +1577,6 @@ Switch101(config)# ip dhcp snooping verify mac-address
 ```
 
 
-
-### standard addressing
 
  Let's break down the addressing scheme and ensure we correctly configure the routes based on the given network topology.
 

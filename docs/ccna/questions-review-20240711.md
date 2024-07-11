@@ -4,7 +4,7 @@
 
 having a lesson taught
 
-![image-20240710103513987](https://han.blob.core.windows.net/typora/image-20240710103513987.png) 
+![image-20240710103513987](https://han.blob.core.windows.net/typora/image-20240710103513987.png)
 
 ### Other Questions
 
@@ -30,9 +30,9 @@ R1(config)# end
 R1# write memory
 ```
 
-**Authentication:** When the user connects to the router, the SSH client uses the private key to authenticate. If the private key matches the public key stored on the router, the user is granted access without needing to type a password. 
+**Authentication:** When the user connects to the router, the SSH client uses the private key to authenticate. If the private key matches the public key stored on the router, the user is granted access without needing to type a password.
 
-````txt
+```txt
 R1(config)# ip ssh public-key-chain
 R1(conf-ssh-pubkey)# username admin
 R1(conf-ssh-pubkey-user)# key-string
@@ -40,29 +40,27 @@ R1(conf-ssh-pubkey-data)# ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEArVz... user@host
 R1(conf-ssh-pubkey-data)# exit
 R1(conf-ssh-pubkey-user)# exit
 R1(conf-ssh-pubkey)# exit
-````
-
-
+```
 
 ![img](https://www.examtopics.com/assets/media/exam-media/04300/0035700001.png)
 
-````txt
+```txt
 R1(config)# router ospf 1
 R1(config-router)# network 10.0.0.0 0.0.0.3 area 0
 R1(config-router)# exit
 R1(config)# interface Serial0/1
 R1(config-if)# ip ospf 1 area 0
 R1(config-if)# exit
-````
+```
 
-````txt
+```txt
 R2(config)# router ospf 1
 R2(config-router)# network 10.0.0.0 0.0.0.3 area 0
 R2(config-router)# exit
 R2(config)# interface Serial0/1
 R2(config-if)# ip ospf 1 area 0
 R2(config-if)# exit
-````
+```
 
 ![img](https://www.examtopics.com/assets/media/exam-media/04300/0021700001.jpg)
 
@@ -90,7 +88,7 @@ SW2(config-if-range)# channel-group 1 mode active
 
 The configuration at the following is thorough and ensures that both the physical interfaces and the logical port-channel interface are set up correctly. This approach can be considered best practice
 
-````txt
+```txt
 SW1# configure terminal
 SW1(config)# interface range fastEthernet 0/1 - 2
 SW1(config-if-range)# switchport trunk encapsulation dot1q
@@ -103,9 +101,9 @@ SW1(config-if)# switchport trunk encapsulation dot1q
 SW1(config-if)# switchport mode trunk
 SW1(config-if)# switchport trunk allowed vlan 100, 200, 300
 SW1(config-if)# exit
-````
+```
 
-````txt
+```txt
 SW2# configure terminal
 SW2(config)# interface range fastEthernet 0/1 - 2
 SW2(config-if-range)# switchport trunk encapsulation dot1q
@@ -118,24 +116,24 @@ SW2(config-if)# switchport trunk encapsulation dot1q
 SW2(config-if)# switchport mode trunk
 SW2(config-if)# switchport trunk allowed vlan 100, 200, 300
 SW2(config-if)# exit
-````
+```
 
 This configuration is indeed robust and ensures that all necessary settings are applied consistently. It combines the benefits of both detailed physical interface configuration and centralized logical interface management.
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/80815-exam-200-301-topic-1-question-115-discussion/#): A network engineer must implement an IPv6 configuration on the vlan 2000 interface to create a routable locally-unique unicast address that is blocked from being advertised to the internet. Which configuration must the engineer apply?
+[Question](https://www.examtopics.com/discussions/cisco/view/80815-exam-200-301-topic-1-question-115-discussion/#): A network engineer must implement an IPv6 configuration on the vlan 2000 interface to create a routable locally-unique unicast address that is blocked from being advertised to the internet. Which configuration must the engineer apply?
 
 - A. interface vlan 2000 ipv6 address ff00:0000:aaaa::1234:2343/64
 - ✔ B. interface vlan 2000 ipv6 address fd00::1234:2343/64 **Most Voted**
 - C. interface vlan 2000 ipv6 address fe80:0000:aaaa::1234:2343/64
 - D. interface vlan 2000 ipv6 address fc00:0000:aaaa::a15d:1234:2343:8aca/64
 
-**Suggested Answer:** *D* [🗳️](https://www.examtopics.com/discussions/cisco/view/80815-exam-200-301-topic-1-question-115-discussion/#)
+**Suggested Answer:** _D_ [🗳️](https://www.examtopics.com/discussions/cisco/view/80815-exam-200-301-topic-1-question-115-discussion/#)
 
 Although it starts with `fc00::` which is within the `fc00::/7` range for Unique Local Addresses (ULA), the correct range for ULA according to RFC 4193 is `fd00::/8`.
 
-![img](https://www.examtopics.com/assets/media/exam-media/04300/0046100001.png) 
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0046100001.png)
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/77915-exam-200-301-topic-1-question-566-discussion/#): Refer to the exhibit. Which two commands must be added to update the configuration of router R1 so that it accepts only encrypted connections? (Choose two.)
+[Question](https://www.examtopics.com/discussions/cisco/view/77915-exam-200-301-topic-1-question-566-discussion/#): Refer to the exhibit. Which two commands must be added to update the configuration of router R1 so that it accepts only encrypted connections? (Choose two.)
 
 - A. transport input ssh **Most Voted**
 - B. username CNAC secret R!41!3705926@
@@ -143,5 +141,4 @@ Although it starts with `fc00::` which is within the `fc00::/7` range for Unique
 - D. line vty 0 4
 - E. ip ssh version 2
 
-**Suggested Answer:** *CE* [🗳️](https://www.examtopics.com/discussions/cisco/view/77915-exam-200-301-topic-1-question-566-discussion/#) 
-
+**Suggested Answer:** _CE_ [🗳️](https://www.examtopics.com/discussions/cisco/view/77915-exam-200-301-topic-1-question-566-discussion/#)

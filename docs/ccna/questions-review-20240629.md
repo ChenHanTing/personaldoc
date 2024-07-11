@@ -1,8 +1,6 @@
 # CCNA June 29th
 
-## LAB1
-
-> There are 3 switches. They connect altogether through trunk. Each switch is also connect to diff devices. From left to right, the switch connect to one vlan303 pc, one vlan202 pc, and (one vlan202+one vlan 303) pcs. How to do with cisco
+There are 3 switches. They connect altogether through trunk. Each switch is also connect to diff devices. From left to right, the switch connect to one vlan303 pc, one vlan202 pc, and (one vlan202+one vlan 303) pcs. How to do with cisco
 
 To configure the three switches and their connections to the devices as described, follow these steps. The switches are connected via trunk ports, and each switch has PCs connected to specific VLANs. Here’s how to set up the configuration:
 

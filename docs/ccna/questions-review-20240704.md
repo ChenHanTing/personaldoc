@@ -6,19 +6,17 @@
 
 2. 解題方法: 截圖標記眼睛比較不會花
 
-   ![image-20240704162934002](https://han.blob.core.windows.net/typora/image-20240704162934002.png) 
-
-   
+   ![image-20240704162934002](https://han.blob.core.windows.net/typora/image-20240704162934002.png)
 
 ### Questions
 
-![image-20240704082402680](https://han.blob.core.windows.net/typora/image-20240704082402680.png) 
+![image-20240704082402680](https://han.blob.core.windows.net/typora/image-20240704082402680.png)
 
 - The **control plane** resides in the **control layer** of the SDN architecture, where the SDN controller makes decisions about how traffic should be handled.
 
 - The **data plane** resides in the **infrastructure layer**, where the physical network devices (switches and routers) execute the forwarding of traffic based on the control plane's instructions.
 
-![image-20240704082558935](https://han.blob.core.windows.net/typora/image-20240704082558935.png) 
+![image-20240704082558935](https://han.blob.core.windows.net/typora/image-20240704082558935.png)
 
 **Low-Latency Queuing (LLQ):**
 
@@ -26,7 +24,7 @@
 - **Purpose**: It is designed to provide guaranteed bandwidth and low delay for critical traffic such as interactive voice and video.
 - **How It Works**: LLQ places high-priority traffic into a strict priority queue, ensuring that this traffic is sent first and experiences minimal delay. This is essential for applications like VoIP (Voice over IP) and video conferencing, where delays and jitter can significantly affect quality.
 
-![image-20240704082823303](https://han.blob.core.windows.net/typora/image-20240704082823303.png) 
+![image-20240704082823303](https://han.blob.core.windows.net/typora/image-20240704082823303.png)
 
 [Question](https://www.examtopics.com/discussions/cisco/view/101139-exam-200-301-topic-1-question-838-discussion/#): How does Rapid PVST+ create a fast loop-free network topology?
 
@@ -35,9 +33,9 @@
 - C. It maps multiple VLANs into the same spanning-tree instance.
 - D. It generates one spanning-tree instance for each VLAN. **Most Voted**
 
-**Suggested Answer:** *D* [🗳️](https://www.examtopics.com/discussions/cisco/view/101139-exam-200-301-topic-1-question-838-discussion/#)  
+**Suggested Answer:** _D_ [🗳️](https://www.examtopics.com/discussions/cisco/view/101139-exam-200-301-topic-1-question-838-discussion/#)
 
-![](https://www.examtopics.com/assets/media/exam-media/04300/0019100001.png) 
+![](https://www.examtopics.com/assets/media/exam-media/04300/0019100001.png)
 
 Processes BPDUs received from the system module. """But it doesn't transmit"""".
 
@@ -47,23 +45,21 @@ Answer correct:
 5- Switched frames from other ports are advanced.
 6- Port in the forwarding state responds to network mngmt messages.
 
-![image-20240704094900529](https://han.blob.core.windows.net/typora/image-20240704094900529.png) 
+![image-20240704094900529](https://han.blob.core.windows.net/typora/image-20240704094900529.png)
 
 **Accessible for management via Telnet, SSH, or a web GUI**: Autonomous access points can be managed directly using various methods such as Telnet, SSH, or a web interface.
 
 **Requires a management IP address**: Each autonomous access point needs its own management IP address for configuration and management purposes.
 
-![image-20240704100752235](https://han.blob.core.windows.net/typora/image-20240704100752235.png) 
+![image-20240704100752235](https://han.blob.core.windows.net/typora/image-20240704100752235.png)
 
 - **Layer 2** is the correct answer because it is where the authentication process is technically implemented and executed.
 
-- **SSID** is not the correct answer because it is used for network **identification** and selection, not for the actual authentication process. 
+- **SSID** is not the correct answer because it is used for network **identification** and selection, not for the actual authentication process.
 
-​	![image-20240704101601829](https://han.blob.core.windows.net/typora/image-20240704101601829.png) 
+​ ![image-20240704101601829](https://han.blob.core.windows.net/typora/image-20240704101601829.png)
 
-
-
-![image-20240704101040709](https://han.blob.core.windows.net/typora/image-20240704101040709.png) 
+![image-20240704101040709](https://han.blob.core.windows.net/typora/image-20240704101040709.png)
 
 The answer is wrong
 
@@ -75,9 +71,9 @@ The answer is wrong
 - D. It is a data center on the public Internet that maintains cloud services for only one company
 - E. It supports network resources from a centralized third-party provider and privately-owned virtual resources
 
-**Suggested Answer:** *AC* [🗳️](https://www.examtopics.com/discussions/cisco/view/97442-exam-200-301-topic-1-question-775-discussion/#)
+**Suggested Answer:** _AC_ [🗳️](https://www.examtopics.com/discussions/cisco/view/97442-exam-200-301-topic-1-question-775-discussion/#)
 
-![image-20240704101156135](https://han.blob.core.windows.net/typora/image-20240704101156135.png) 
+![image-20240704101156135](https://han.blob.core.windows.net/typora/image-20240704101156135.png)
 
 **B - Multicast Traffic**: Multicast involves one-to-many communication. IPsec does not natively support multicast traffic well. To secure multicast traffic, protocols such as GRE (Generic Routing Encapsulation) are often used in conjunction with IPsec to encapsulate the multicast packets.
 
@@ -88,13 +84,13 @@ The answer is wrong
 - A. forwarding
 - B. listening
 - C. learning
-- ✔ D. discarding 
+- ✔ D. discarding
 
-**Suggested Answer:** *C* [🗳️](https://www.examtopics.com/discussions/cisco/view/123880-exam-200-301-topic-1-question-1207-discussion/#)
+**Suggested Answer:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/123880-exam-200-301-topic-1-question-1207-discussion/#)
 
 In Rapid PVST+, the first state that a switch port enters after the boot process is the "discarding" state. During this state, the port doesn´t forward frames but listens to BPDUs to determine the network topology. After the discarding state, the port transitions through the listening and learning states before reaching the forwarding state, where it actively forwards frames.
 
-![image-20240704102843907](https://han.blob.core.windows.net/typora/image-20240704102843907.png) 
+![image-20240704102843907](https://han.blob.core.windows.net/typora/image-20240704102843907.png)
 
 1000BASE-LX:
 Used for Gigabit Ethernet over optical fiber
@@ -109,11 +105,9 @@ Supports speeds up to 1000 Mbps (1 Gbps)
 
 Since both 1000BASE-LX and 1000BASE-T use the Ethernet data-link layer protocol, and the header and trailer formats are standardized by IEEE 802.3, ensuring consistency and interoperability within Ethernet networks.
 
-![image-20240704103629262](https://han.blob.core.windows.net/typora/image-20240704103629262.png) 
+![image-20240704103629262](https://han.blob.core.windows.net/typora/image-20240704103629262.png)
 
-
-
-![image-20240704104825605](https://han.blob.core.windows.net/typora/image-20240704104825605.png) 
+![image-20240704104825605](https://han.blob.core.windows.net/typora/image-20240704104825605.png)
 
 If your switch port is set to "dynamic auto" and the neighboring switch port is set to "desirable," the trunk link will be established because "dynamic auto" will passively form a trunk if the other side is actively trying to negotiate a trunk (i.e., set to "desirable").
 
@@ -125,13 +119,11 @@ While configuring both ends to "dynamic desirable" is acceptable and will indeed
 
 C for best practice ...
 
-![image-20240704105051605](https://han.blob.core.windows.net/typora/image-20240704105051605.png) 
+![image-20240704105051605](https://han.blob.core.windows.net/typora/image-20240704105051605.png)
 
-![image-20240704105154357](https://han.blob.core.windows.net/typora/image-20240704105154357.png) 
+![image-20240704105154357](https://han.blob.core.windows.net/typora/image-20240704105154357.png)
 
-
-
-![image-20240704105324461](https://han.blob.core.windows.net/typora/image-20240704105324461.png) 
+![image-20240704105324461](https://han.blob.core.windows.net/typora/image-20240704105324461.png)
 
 Switch 1 Configuration (Active Mode):
 
@@ -173,24 +165,24 @@ If the EtherChannel does not need to be in trunk mode and can be in access mode,
 
 So it isn't really necessary to be trunk or access mode
 
-![image-20240704164824848](https://han.blob.core.windows.net/typora/image-20240704164824848.png) 
+![image-20240704164824848](https://han.blob.core.windows.net/typora/image-20240704164824848.png)
 
 **SW1** interfaces are configured with `channel-group 1 mode on`, which forces the port to form an EtherChannel without using LACP. Since SW1 is using `on` mode (which does not participate in LACP), and SW2 is using `active` mode, they are not compatible. To form an LACP EtherChannel, both sides must use compatible LACP modes.
 
 By changing SW1's mode to `active` or `passive`, it becomes compatible with SW2's `active` mode, enabling LACP negotiation and forming the EtherChannel.
 
-![image-20240704111006068](https://han.blob.core.windows.net/typora/image-20240704111006068.png) 
+![image-20240704111006068](https://han.blob.core.windows.net/typora/image-20240704111006068.png)
 
-![image-20240704111156610](https://han.blob.core.windows.net/typora/image-20240704111156610.png) 
+![image-20240704111156610](https://han.blob.core.windows.net/typora/image-20240704111156610.png)
 
 ![image-20240704111253211](https://han.blob.core.windows.net/typora/image-20240704111253211.png)
 
 **Bridge Mode (Mesh APs)**
 APs in Bridge Mode act as wireless bridges connecting two or more wired networks. They are often used in mesh network deployments.
 
-![image-20240704111429418](https://han.blob.core.windows.net/typora/image-20240704111429418.png) 
+![image-20240704111429418](https://han.blob.core.windows.net/typora/image-20240704111429418.png)
 
-![image-20240704112055780](https://han.blob.core.windows.net/typora/image-20240704112055780.png) 
+![image-20240704112055780](https://han.blob.core.windows.net/typora/image-20240704112055780.png)
 
 ```
 Router(config)# interface GigabitEthernet0/0
@@ -200,25 +192,25 @@ Router(config-if)# ip address dhcp
 The interface `GigabitEthernet0/0` is configured to act as a DHCP client.
 It will send a DHCPDISCOVER message to locate a DHCP server and obtain an IP address along with other necessary network information.
 
-![image-20240704113205531](https://han.blob.core.windows.net/typora/image-20240704113205531.png) 
+![image-20240704113205531](https://han.blob.core.windows.net/typora/image-20240704113205531.png)
 
-![image-20240704113417789](https://han.blob.core.windows.net/typora/image-20240704113417789.png) 
+![image-20240704113417789](https://han.blob.core.windows.net/typora/image-20240704113417789.png)
 
- **B. It supports network resources from a centralized third-party provider and privately-owned virtual resources**:
+**B. It supports network resources from a centralized third-party provider and privately-owned virtual resources**:
 Public clouds are provided by third-party providers who own and manage the physical infrastructure. Users can deploy virtual resources on this infrastructure.
 
 **C. It is owned and maintained by one party, but it is shared among multiple organizations**:
 While it is true that a public cloud is owned and maintained by a third-party provider and shared among multiple organizations, the question asks for characteristics **specific to a public cloud implementation.** The selected correct answers provide a more precise definition.
 
-![image-20240704114224489](https://han.blob.core.windows.net/typora/image-20240704114224489.png) 
+![image-20240704114224489](https://han.blob.core.windows.net/typora/image-20240704114224489.png)
 
-解題線索1
+解題線索 1
 
-````txt
+```txt
 access-list [access-list-number] permit [protocol] host [source-ip] host [destination-ip] eq [port]
-````
+```
 
-解題線索2
+解題線索 2
 
 | **Service** | **Port** | **Protocol** | **Usage**                          |
 | ----------- | -------- | ------------ | ---------------------------------- |
@@ -241,7 +233,7 @@ or more specifically for your given scenario:
 access-list 100 permit udp host 10.0.1.1 eq 67 host 10.148.2.1 eq 68
 ```
 
-![image-20240704123515260](https://han.blob.core.windows.net/typora/image-20240704123515260.png) 
+![image-20240704123515260](https://han.blob.core.windows.net/typora/image-20240704123515260.png)
 
 Commands to Enable SSH on Router:
 
@@ -256,27 +248,27 @@ The `ip ssh pubkey-chain` command is used to configure SSH key pairs for user au
 
 Configuration Example:
 
-````txt
+```txt
 R1# configure terminal
 R1(config)# crypto key generate rsa
 R1(config)# ip ssh pubkey-chain
-````
+```
 
-![image-20240704123656027](https://han.blob.core.windows.net/typora/image-20240704123656027.png) 
+![image-20240704123656027](https://han.blob.core.windows.net/typora/image-20240704123656027.png)
 
-最高級是15 
+最高級是 15
 
-![image-20240704134339830](https://han.blob.core.windows.net/typora/image-20240704134339830.png) 
+![image-20240704134339830](https://han.blob.core.windows.net/typora/image-20240704134339830.png)
 
-![image-20240704134517668](https://han.blob.core.windows.net/typora/image-20240704134517668.png) 
+![image-20240704134517668](https://han.blob.core.windows.net/typora/image-20240704134517668.png)
 
-![image-20240704142500918](https://han.blob.core.windows.net/typora/image-20240704142500918.png) 
+![image-20240704142500918](https://han.blob.core.windows.net/typora/image-20240704142500918.png)
 
 This correctly describes the primary difference. A unicast address uniquely identifies one interface on a single node, whereas an anycast address can be assigned to multiple interfaces on multiple nodes, with the closest one receiving the packet.
 
 **Option D** is incorrect because it inaccurately describes the configuration requirements for unicast and anycast addresses. Both unicast and anycast addresses must be explicitly configured, but anycast requires additional configuration to function correctly.
 
-![image-20240704143047788](https://han.blob.core.windows.net/typora/image-20240704143047788.png) 
+![image-20240704143047788](https://han.blob.core.windows.net/typora/image-20240704143047788.png)
 
 Here is a complete example of how to configure the router to accept only SSH connections:
 
@@ -294,52 +286,52 @@ R1(config)# end
 R1# write memory
 ```
 
-![image-20240704161740578](https://han.blob.core.windows.net/typora/image-20240704161740578.png) 
+![image-20240704161740578](https://han.blob.core.windows.net/typora/image-20240704161740578.png)
 
 **Password Encryption**: RADIUS encrypts the password field in the access-request packet to protect it from being intercepted and read by unauthorized parties. This encryption uses a shared secret between the RADIUS client and the RADIUS server along with the Request Authenticator field to encrypt the password.
 
 **Username and Other Fields**: The username and other fields are not encrypted by default in RADIUS. They are sent in plaintext.
 
-![image-20240704162614632](https://han.blob.core.windows.net/typora/image-20240704162614632.png) 
+![image-20240704162614632](https://han.blob.core.windows.net/typora/image-20240704162614632.png)
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/83756-exam-200-301-topic-1-question-107-discussion/#): What is a function of an endpoint on a network?
+[Question](https://www.examtopics.com/discussions/cisco/view/83756-exam-200-301-topic-1-question-107-discussion/#): What is a function of an endpoint on a network?
 
 - A. provides wireless services to users in a building
 - B. connects server and client device to a network **Most Voted**
 - C. allows users to record data and transmit to a file server **Most Voted**
 - D. forwards traffic between VLANs on a network
 
-**Suggested Answer:** *C* [🗳️](https://www.examtopics.com/discussions/cisco/view/83756-exam-200-301-topic-1-question-107-discussion/#)
+**Suggested Answer:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/83756-exam-200-301-topic-1-question-107-discussion/#)
 An endpoint is a remote computing device that communicates back and forth with a network to which it is connected. Examples of endpoints include:
 Desktops, Laptops, Smartphones, Tablets, Servers, Workstations
 Internet-of-things (IoT) devices
 
-![image-20240704163944872](https://han.blob.core.windows.net/typora/image-20240704163944872.png) 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/86483-exam-200-301-topic-1-question-451-discussion/#): Refer to the exhibit. Which route must be configured on R1 so that OSPF routing is used when OSPF is up, but the server is still reachable when OSPF goes down?
+![image-20240704163944872](https://han.blob.core.windows.net/typora/image-20240704163944872.png)
+[Question](https://www.examtopics.com/discussions/cisco/view/86483-exam-200-301-topic-1-question-451-discussion/#): Refer to the exhibit. Which route must be configured on R1 so that OSPF routing is used when OSPF is up, but the server is still reachable when OSPF goes down?
 
-![img](https://www.examtopics.com/assets/media/exam-media/04300/0036100001.png) 
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0036100001.png)
 
 - A. ip route 10.1.1.10 255.255.255.255 gi0/0 125 **Most Voted**
 - B. ip route 10.1.1.0 255.255.255.0 172.16.2.2 100
 - C. ip route 10.1.1.0 255.255.255.0 gi0/1 125
 - D. ip route 10.1.1.10 255.255.255.255 172.16.2.2 100
 
-**Suggested Answer:** *A* [🗳️](https://www.examtopics.com/discussions/cisco/view/86483-exam-200-301-topic-1-question-451-discussion/#)
+**Suggested Answer:** _A_ [🗳️](https://www.examtopics.com/discussions/cisco/view/86483-exam-200-301-topic-1-question-451-discussion/#)
 This is an example of a floating static route when the Administrative Distance must be greater than the primary route. Currently the OSPF AD for the route is 110, so if that route was to go away then this route with an AD of 125 would be used.
 
-![image-20240704164100355](https://han.blob.core.windows.net/typora/image-20240704164100355.png) 
+![image-20240704164100355](https://han.blob.core.windows.net/typora/image-20240704164100355.png)
 
 當時下課的時候有嚇一跳
 
-![image-20240704164201976](https://han.blob.core.windows.net/typora/image-20240704164201976.png) 
+![image-20240704164201976](https://han.blob.core.windows.net/typora/image-20240704164201976.png)
 
 ![image-20240704165145670](https://han.blob.core.windows.net/typora/image-20240704165145670.png)
 
-![image-20240704165505907](https://han.blob.core.windows.net/typora/image-20240704165505907.png) 
+![image-20240704165505907](https://han.blob.core.windows.net/typora/image-20240704165505907.png)
 
 Lightweight APs are typically connected to the network using access ports because each AP usually belongs to a single VLAN that carries all of its management and data traffic back to the WLC. The WLC handles VLAN tagging and distribution of the traffic to the appropriate VLANs.
 
-![img](https://www.examtopics.com/assets/media/exam-media/04300/0039800001.png) 
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0039800001.png)
 
 Refer to the exhibit. All interfaces are configured with duplex auto and ip ospf network broadcast. Which configuration allows routers R14 and R86 to form an
 OSPFv2 adjacency and act as a central point for exchanging OSPF information between routers?
@@ -449,9 +441,8 @@ Explanation:
 
 **Option D** is the best choice because it correctly configures R14 with a higher OSPF priority, ensuring it becomes the DR, and ensures matching MTU sizes on both routers, facilitating OSPF adjacency formation.
 
-![image-20240704171125370](https://han.blob.core.windows.net/typora/image-20240704171125370.png) 
+![image-20240704171125370](https://han.blob.core.windows.net/typora/image-20240704171125370.png)
 
-![image-20240704171228714](https://han.blob.core.windows.net/typora/image-20240704171228714.png) 
+![image-20240704171228714](https://han.blob.core.windows.net/typora/image-20240704171228714.png)
 
-![image-20240704171609899](https://han.blob.core.windows.net/typora/image-20240704171609899.png) 
-
+![image-20240704171609899](https://han.blob.core.windows.net/typora/image-20240704171609899.png)

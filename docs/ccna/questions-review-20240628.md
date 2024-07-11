@@ -299,7 +299,7 @@ ip nat inside source list NAT_TRAFFIC pool MY_NAT_POOL overload
 
 With protect mode, the only action the switch takes for a frame that violates the port security rules is to discard the frame. The switch does not change the port to an errdisabled state, does not generate messages, and does not even increment the violations counter (Official Cert Guide, V2 pg350).
 
-![](https://www.examtopics.com/assets/media/exam-media/04300/0049000001.png) 
+![](https://www.examtopics.com/assets/media/exam-media/04300/0049000001.png)
 
 Refer to the exhibit. Users on existing VLAN 100 can reach sites on the Internet. Which action must the administrator take to establish connectivity to the Internet for users in VLAN 200?
 
@@ -446,17 +446,17 @@ interface port-channel 1
 
 ### OSPF
 
-Which two minimum parameters must be configured on an active interface to enable OSPFV2 to operate? (Choose two.)
+[Question](https://www.examtopics.com/discussions/cisco/view/56040-exam-200-301-topic-1-question-353-discussion): Which two minimum parameters must be configured on an active interface to enable OSPFV2 to operate? (Choose two.)
 
 - A. OSPF process ID **Most Voted**
-- B. OSPF MD5 authentication key
+- B. OzPF MD5 authentication key
 - C. OSPF stub flag
 - D. IPv6 address
 - E. OSPF area **Most Voted**
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/56040-exam-200-301-topic-1-question-353-discussion)
 
-**Question:** _AE_ [🗳️](https://www.examtopics.com/discussions/cisco/view/56040-exam-200-301-topic-1-question-353-discussion)
+
+**Suggested Answer:** _AE_ [🗳️](https://www.examtopics.com/discussions/cisco/view/56040-exam-200-301-topic-1-question-353-discussion)
 
 Here’s a complete example of configuring OSPFv2 on a router with two interfaces, assigning them to different OSPF areas:
 
@@ -554,7 +554,7 @@ In this configuration, GigabitEthernet0/2 is set as a trunk port:
 - VLANs 10, 20, and 30 are allowed on the trunk.
 - Traffic for VLAN 20 is sent untagged, while traffic for VLANs 10 and 30 is tagged.
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629050328292.png" width="500" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629050328292.png" width="500" /> 
 
 Refer to the exhibit. An extended ACL has been configured and applied to router R2. The configuration failed to work as intended.
 Which two changes stop outbound traffic on TCP ports 25 and 80 to 10.0.20.0/26 from the 10.0.10.0/26 subnet while still allowing all other traffic? (Choose two.)
@@ -581,12 +581,11 @@ Which two changes stop outbound traffic on TCP ports 25 and 80 to 10.0.20.0/26 f
 
 ![image-20240629050916952](https://han.blob.core.windows.net/typora/image-20240629050916952.png)
 
-Explanation:
+**Explanation for A**: Each virtualization solution have virtual switches (logical network), these virtual switches allows virtual machines to communicate on the network. We also assign vlan tag on these switches or make them trunk.
 
-- A- Each virtualization solution have virtual switches (logical network), these virtual switches allows virtual machines to communicate on the network. We also assign vlan tag on these switches or make them trunk.
-- B) The main purpose of Server Virtualization is to run many VMs on the same physical server
+**Explanation for B**: The main purpose of Server Virtualization is to run many VMs on the same physical server
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629051220833.png" alt="image-20240629051220833" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629051220833.png" alt="image-20240629051220833" style="zoom:50%;" /> 
 
 **Unique Local Address (ULA) - FC00::/8 and FD00::/8**
 
@@ -596,7 +595,7 @@ he IPv6 address block **FC00::/8** is reserved for future use, which means it is
 
 **FE80::/10**: Link-Local Address
 
-### **switchport mode dynamic desirable** dnt need to explicitly set trunk mode
+### `switchport mode dynamic desirable` doesn't need to explicitly set trunk mode
 
 When configuring DTP on Cisco switches, using `switchport mode dynamic desirable` or `switchport mode dynamic auto` allows the interfaces to negotiate trunking automatically without explicitly setting the interface to trunk mode. However, setting the encapsulation type (`switchport trunk encapsulation dot1q`) is necessary if the switch supports multiple encapsulation types and you want to ensure a specific encapsulation is used.
 
@@ -621,7 +620,7 @@ When configuring Link Aggregation Control Protocol (LACP) on Cisco switches, the
 - C. FlexConnect AP mode fails to function if the AP loses connectivity with the WLC
 - D. FlexConnect AP mode bridges the traffic from the AP to the WLC when local switching is configured
 
-**Question:** _A_ [🗳️](https://www.examtopics.com/discussions/cisco/view/22696-exam-200-301-topic-1-question-233-discussion)
+**Suggested Answer:** _A_ [🗳️](https://www.examtopics.com/discussions/cisco/view/22696-exam-200-301-topic-1-question-233-discussion)
 
 A is an accurate statement as data traffic is tunneled back to the controller for an SSID with Local AP Mode
 B should have referenced FlexConnect AP [Standalone Mode], not local ap mode [Central Switching or Connected Mode]
@@ -636,7 +635,7 @@ C is wrong as the purpose of FlexConnect is to provide local connectivity when t
 | Functionality without WLC           | Limited (cannot serve clients effectively) | Continues to serve clients, local switching           |
 | Control and Data Traffic Separation | Both tunneled to WLC                       | Control tunneled to WLC, data can be locally switched |
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629062058523.png" alt="image-20240629062058523" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629062058523.png" alt="image-20240629062058523" style="zoom:50%;" /> 
 
 **Default STP Path Costs**: Cisco switches use specific default costs based on the bandwidth of the link:
 
@@ -678,11 +677,9 @@ interface GigabitEthernet0/0
 
 ### Configuring the NTP Client
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063857417.png" alt="image-20240629063857417" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063857417.png" alt="image-20240629063857417" style="zoom:50%;" /> 
 
 The NTP client is configured to synchronize its time with the NTP server. Here’s how to configure an NTP client:
-
-**Example for a Cisco device:**
 
 ```plaintext
 ntp server <NTP_SERVER_IP>
@@ -692,7 +689,7 @@ ntp server <NTP_SERVER_IP>
 
 clock set 00:00:00 January 1 2020
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629064042718.png" alt="image-20240629064042718" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629064042718.png" alt="image-20240629064042718" style="zoom:50%;" /> 
 
 ### VPN
 
@@ -706,8 +703,6 @@ clock set 00:00:00 January 1 2020
 - Allows individual users to connect securely to a private network from a remote location.
 - Used to enable employees to access the company network from home, hotels, or other remote locations.
 
-Enabling the "allow AAA Override" option on a Cisco Wireless LAN Controller (WLC) allows the controller to forward the user authentication and authorization information to an external AAA (Authentication, Authorization, and Accounting) server, such as Cisco Identity Services Engine (ISE), for further policy enforcement
-
 [Question](https://www.examtopics.com/discussions/cisco/view/84277-exam-200-301-topic-1-question-341-discussion): After installing a new Cisco ISE server which task must the engineer perform on the Cisco WLC to connect wireless clients on a specific VLAN based on their credentials?
 
 - A. Disable the LAG Mode on Next Reboot.
@@ -715,11 +710,13 @@ Enabling the "allow AAA Override" option on a Cisco Wireless LAN Controller (WLC
 - C. Enable the Allow AAA Override. **Most Voted**
 - D. Enable the Authorize MIC APs against auth-list or AAA
 
-**Question:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/84277-exam-200-301-topic-1-question-341-discussion)
+**Suggested Answer:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/84277-exam-200-301-topic-1-question-341-discussion)
+
+Enabling the "allow AAA Override" option on a Cisco Wireless LAN Controller (WLC) allows the controller to forward the user authentication and authorization information to an external AAA (Authentication, Authorization, and Accounting) server, such as Cisco Identity Services Engine (ISE), for further policy enforcement
 
 **Functionality**: By enabling the AAA Override, the WLC can dynamically assign VLANs, QoS profiles, and other policies based on the information provided by the AAA server. This is crucial for implementing role-based access control and dynamic VLAN assignments.
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629065958197.png" alt="image-20240629065958197" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629065958197.png" alt="image-20240629065958197" style="zoom:50%;" /> 
 
 [Question](https://www.examtopics.com/discussions/cisco/view/110564-exam-200-301-topic-1-question-307-discussion): Refer to the exhibit. A network engineer must update the configuration on Switch2 so that it sends LLDP packets every minute and the information sent via LLDP is refreshed every 3 minutes. Which configuration must the engineer apply?
 
@@ -729,15 +726,13 @@ Enabling the "allow AAA Override" option on a Cisco Wireless LAN Controller (WLC
 - C. Switch2(config)#lldp timer 1 Switch2(config)#lldp holdtime 3
 - D. Switch2(config)#lldp timer 1 Switch2(config)#lldp tlv-select 3
 
-**Question:** _B_ 🗳️ Reference:
-https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/system_management/configuration/guide/ b_Cisco_Nexus_9000_Series_NX-OS_System_Management_Configuration_Guide/sm_lldp.pdf
+**Suggested Answer:** _B_ 🗳️ Reference:
 
-Explanation of LLDP Commands
+**`lldp timer <seconds>`**: This command sets the frequency at which LLDP advertisements are sent. Setting this to 60 seconds means LLDP packets will be sent every 60 seconds (1 minute).
 
-- **`lldp timer <seconds>`**: This command sets the frequency at which LLDP advertisements are sent. Setting this to 60 seconds means LLDP packets will be sent every 60 seconds (1 minute).
-- **`lldp holdtime <seconds>`**: This command sets the time to hold LLDP information before it is discarded if no new information is received. Setting this to 180 seconds means the information will be refreshed every 3 minutes.
+**`lldp holdtime <seconds>`**: This command sets the time to hold LLDP information before it is discarded if no new information is received. Setting this to 180 seconds means the information will be refreshed every 3 minutes.
 
-![image-20240629095515289](https://han.blob.core.windows.net/typora/image-20240629095515289.png)
+![image-20240629095515289](https://han.blob.core.windows.net/typora/image-20240629095515289.png) 
 
 LAG (Link Aggregation Group)
 
@@ -762,7 +757,7 @@ LAG (Link Aggregation Group) on Cisco devices is a general term that refers to t
 **C. The management interface must be reassigned if LAG is disabled.**
 **Incorrect**: Disabling LAG does not necessarily require reassignment of the management interface. The management interface configuration is usually retained, but the way traffic is handled on physical interfaces changes.
 
-![image-20240629100236752](https://han.blob.core.windows.net/typora/image-20240629100236752.png)
+![image-20240629100236752](https://han.blob.core.windows.net/typora/image-20240629100236752.png) 
 
 **Option A: It serves as the centralized management point of an SDN architecture.**
 
@@ -772,7 +767,7 @@ This is the correct answer because, in SDN, the controller acts as a central poi
 
 This is incorrect because the controller in SDN does not centralize the data plane. The data plane, which is responsible for forwarding traffic based on the instructions from the controller, remains distributed across the network devices. **The controller centralizes the control plane, not the data plane.** The control plane is where the decisions about where traffic should be sent are made, whereas the data plane is where the actual traffic forwarding happens.
 
-![image-20240629100334567](https://han.blob.core.windows.net/typora/image-20240629100334567.png)
+<img src="https://han.blob.core.windows.net/typora/image-20240629100334567.png" alt="image-20240629100334567" style="zoom:50%;" /> 
 
 第一題應該是 WLC,首先那兩個 AAA 服務器的答案肯定是錯的,因為兩個本質上就是相同的東西
 那就只剩 WLC 和 AP 了,然後題目那邊它有特別強調是 lightweight AP
@@ -781,27 +776,27 @@ This is incorrect because the controller in SDN does not centralize the data pla
 
 那答案就只有 WLC 了
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/85954-exam-200-301-topic-1-question-111-discussion): What provides centralized control of authentication and roaming in an enterprise network?
+[Question](https://www.examtopics.com/discussions/cisco/view/85954-exam-200-301-topic-1-question-111-discussion): What provides centralized control of authentication and roaming in an enterprise network?
 
-- A. a lightweight access point
-- B. a wireless LAN controller **Most Voted**
-- C. a firewall
-- D. a LAN switch
+A. a lightweight access point
+B. a wireless LAN controller **Most Voted**
+C. a firewall
+D. a LAN switch
 
-**Question:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/85954-exam-200-301-topic-1-question-111-discussion)
+**Suggested Answer:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/85954-exam-200-301-topic-1-question-111-discussion)
 
 The correct answer to the question "What provides centralized control of authentication and roaming in an enterprise network?" is B - a wireless LAN controller.
 
 A wireless LAN (Local Area Network) controller (WLC) is a device that provides centralized control and management of multiple wireless access points (APs) in a wireless network . It is responsible for configuring and monitoring the access points, managing the wireless traffic, and providing security protocols such as authentication and encryption. The WLC also enables seamless roaming between the access points without the need for reauthentication, as it maintains a centralized database of user credentials and authentication information.
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/41484-exam-200-301-topic-1-question-225-discussion): What is a function of Wireless LAN Controller?
+[Question](https://www.examtopics.com/discussions/cisco/view/41484-exam-200-301-topic-1-question-225-discussion): What is a function of Wireless LAN Controller?
 
 - A. register with a single access point that controls traffic between wired and wireless endpoints
 - B. use SSIDs to distinguish between wireless clients
 - C. send LWAPP packets to access points **Most Voted**
 - D. monitor activity on wireless and wired LANs
 
-**Question:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/41484-exam-200-301-topic-1-question-225-discussion)
+**Suggested Answer:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/41484-exam-200-301-topic-1-question-225-discussion)
 
 Lightweight APs (LAPs) is devices require no initial configuration. LAPs use the Lightweight Access Point Protocol (LWAPP) to communicate with a WLAN controller (WLC), as shown in the below figure. Controller-based APs are useful in situations where many APs are required in the network. As more APs are added, each AP is automatically configured and managed by the WLC.
 
@@ -832,7 +827,7 @@ Why LWAPP is mentioned:
 - C. MAC Authentication Bypass
 - D. IP Source Guard
 
-**Question:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/55990-exam-200-301-topic-1-question-251-discussion)
+**Suggested Answer:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/55990-exam-200-301-topic-1-question-251-discussion)
 
 **A. 802.11n**
 802.11n is a wireless networking standard that improves network throughput over previous standards like 802.11a and 802.11g. It does not include mechanisms for authentication or preventing unauthorized network access.
@@ -840,7 +835,7 @@ Why LWAPP is mentioned:
 **B. 802.1x**
 802.1x is a network access control protocol for securing wired and wireless networks. It provides an authentication mechanism to devices wishing to connect to a LAN or WLAN. By requiring authentication before granting network access, 802.1x ensures that only authorized devices can connect, effectively preventing arbitrary connections.
 
-![image-20240629111517962](https://han.blob.core.windows.net/typora/image-20240629111517962.png)
+![image-20240629111517962](https://han.blob.core.windows.net/typora/image-20240629111517962.png) 
 
 Rapid Spanning Tree Protocol (RSTP) uses three port states:
 
@@ -850,7 +845,7 @@ Rapid Spanning Tree Protocol (RSTP) uses three port states:
 
 **PortFast** mode does not have the learning and listening states typically found in Spanning Tree Protocol (STP) and Rapid Spanning Tree Protocol (RSTP).
 
-**PortFast** can be used in conjunction with Rapid Spanning Tree Protocol (RSTP). In fact, RSTP has built-in optimizations that make it more compatible with PortFast, enhancing network efficiency and convergence times. In Rapid Spanning Tree Protocol (RSTP), when PortFast is enabled on a port, it will primarily be in the Discarding and Forwarding states.
+**PortFast** can be used in conjunction with Rapid Spanning Tree Protocol (RSTP). In fact, RSTP has built-in optimizations that make it more compatible with PortFast, enhancing network efficiency and convergence times. In Rapid Spanning Tree Protocol (RSTP), when PortFast is enabled on a port, it will primarily be in the **Discarding and Forwarding states.**
 
 [Question](https://www.examtopics.com/discussions/cisco/view/63606-exam-200-301-topic-1-question-642-discussion): A port security violation has occurred on a switch port due to the maximum MAC address count being exceeded. Which command must be configured to increment the security-violation count and forward an SNMP trap?
 
@@ -859,11 +854,13 @@ Rapid Spanning Tree Protocol (RSTP) uses three port states:
 - C. switchport port-security violation restrict **Most Voted**
 - D. switchport port-security violation shutdown
 
-**Question:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/63606-exam-200-301-topic-1-question-642-discussion)
+**Suggested Answer:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/63606-exam-200-301-topic-1-question-642-discussion)
 
-> Protect - drops the packet with unknown src address until you remove a secure mac address to drop below the max value. no trap is sent.
-> Restrict- same but violation increments and TRAP sent to SNMP manager.
-> shutdown- puts interface in error disabled and sends a trap to the manager
+| Violation Mode | Behavior Description                                         | SNMP Trap Sent | Violation Counter Incremented |
+| -------------- | ------------------------------------------------------------ | -------------- | ----------------------------- |
+| Protect        | Drops packets with unknown source addresses until the number of secure MAC addresses is below the maximum. | No             | No                            |
+| Restrict       | Drops packets with unknown source addresses, increments violation counter, and sends SNMP trap. | Yes            | Yes                           |
+| Shutdown       | Puts the interface in error-disabled state, drops packets with unknown source addresses, and sends SNMP trap. | Yes            | Not applicable                |
 
 What is a function of TFTP in network operations?
 
@@ -872,11 +869,11 @@ What is a function of TFTP in network operations?
 - C. transfers configuration files from a server to a router on a congested link
 - D. transfers files between file systems on a router
 
-TFTP (Trivial File Transfer Protocol) is a simple file transfer protocol that is often used for transferring small files between network devices. One of the primary functions of TFTP in network operations is to transfer IOS (Internetwork Operating System) images from a TFTP server to a router for firmware upgrades. Therefore, option A is the correct answer.
+TFTP (Trivial File Transfer Protocol) is a simple file transfer protocol that is often used for transferring small files between network devices. One of the primary functions of TFTP in network operations is to transfer IOS (Internetwork Operating System) images from a TFTP server to a router for firmware upgrades. 
 
-> always associate TFTP with ISO images and firmware upgrades
+**TIP**: always associate TFTP with ISO images and firmware upgrades
 
-![image-20240629112200710](https://han.blob.core.windows.net/typora/image-20240629112200710.png)
+![image-20240629112200710](https://han.blob.core.windows.net/typora/image-20240629112200710.png) 
 
 When a group of employees enters a building using the ID badge of only one person, they are bypassing the physical access control measures in place. This is a violation because it allows unauthorized individuals to gain access to restricted areas, potentially compromising the security of the building or the information within.
 
@@ -886,7 +883,7 @@ When a group of employees enters a building using the ID badge of only one perso
 2. **CQ**: Custom Queuing
 3. **FIFO**: First In, First Out
 4. **PQ**: Priority Queuing
-5. **WFQ**: Weighted Fair Queuing|
+5. **WFQ**: Weighted Fair Queuing
 
 ### Differences between CQ and WFQ
 
@@ -928,7 +925,7 @@ Custom Queuing (CQ) and Weighted Fair Queuing (WFQ) primarily focus on how bandw
 - C. LLQ
 - D. shaping
 
-**Question:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/83937-exam-200-301-topic-1-question-594-discussion)
+**Suggested Answer:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/83937-exam-200-301-topic-1-question-594-discussion)
 Use the police command to mark a packet with different quality of service (QoS) values based on conformance to the service-level agreement. Traffic policing allows you to control the maximum rate of traffic transmitted or received on an interface.
 
 > 🤖 This one made me read the entire QOS chapter again (netacad module 3 chapter 9), because of the way the question is asked...
@@ -949,7 +946,7 @@ Traffic shaping controls the flow of outbound traffic to conform to a specified 
 - D. PBR
 - E. PQ **Most Voted**
 
-**Question:** _AE_ [🗳️](https://www.examtopics.com/discussions/cisco/view/60667-exam-200-301-topic-1-question-553-discussion)
+**Suggested Answer:** _AE_ [🗳️](https://www.examtopics.com/discussions/cisco/view/60667-exam-200-301-topic-1-question-553-discussion)
 
 > Q at the end = qeueing protocol = congestion management
 
@@ -969,11 +966,11 @@ Which characteristic of distributed class-based weighted fair queueing addresses
 
   Similar to option A, the ability to define custom classes provides granularity but does not directly address jitter prevention
 
-**Question:** _A_ [🗳️](https://www.examtopics.com/discussions/cisco/view/76331-exam-350-801-topic-1-question-235-discussion)
+**Suggested Answer:** _A_ [🗳️](https://www.examtopics.com/discussions/cisco/view/76331-exam-350-801-topic-1-question-235-discussion)
 
 > Class-Based Weighted Fair Queueing (CBWFQ) provides weighted fair queuing based on defined classes with no strict priority queue available for real-time traffic. CBWFQ allows a user (you) to define traffic classes and then assign characteristics to that class.
 
-![image-20240629131725098](https://han.blob.core.windows.net/typora/image-20240629131725098.png)
+![image-20240629131725098](https://han.blob.core.windows.net/typora/image-20240629131725098.png) 
 
 [Question](https://www.examtopics.com/discussions/cisco/view/110262-exam-200-301-topic-1-question-955-discussion): What is the purpose of classifying network traffic in QoS?
 
@@ -982,11 +979,11 @@ Which characteristic of distributed class-based weighted fair queueing addresses
 - C. identifies the type of traffic that will receive a particular treatment
 - D. writes the class identifier of a packet to a dedicated field in the packet header
 
-**Question:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/110262-exam-200-301-topic-1-question-955-discussion)
+**Suggested Answer:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/110262-exam-200-301-topic-1-question-955-discussion)
 
 ### Drag and Drop
 
-![image-20240629133130396](https://han.blob.core.windows.net/typora/image-20240629133130396.png)
+![image-20240629133130396](https://han.blob.core.windows.net/typora/image-20240629133130396.png) 
 
 1. **DHCP server**: Network component that propagates IP addresses to hosts on the network.
 
@@ -1000,13 +997,36 @@ Which characteristic of distributed class-based weighted fair queueing addresses
 
 5. **untrusted**: Default state of all interfaces.
 
-![image-20240629140317954](https://han.blob.core.windows.net/typora/image-20240629140317954.png)
+![image-20240629140317954](https://han.blob.core.windows.net/typora/image-20240629140317954.png) 
 
 **Provides local control for network segments using a client-server scheme**: In a DHCP setup, the DHCP server provides IP addresses and other network configuration details to DHCP clients (e.g., computers, phones) within the network. This setup operates on a client-server model where the server manages IP address assignments and the clients request configuration details.
 
 **Client-Server Scheme** (方案): The server (DHCP server) is the provider of IP addresses, and the clients (devices on the network) are the consumers that request IP addresses from the server.
 
-![](https://img.examtopics.com/200-301/image150.png)
+DHCP Configuration Example
+
+```
+! Define the DHCP pool
+ip dhcp pool MyPool
+  network 192.168.1.0 255.255.255.0
+  default-router 192.168.1.1
+  dns-server 8.8.8.8
+  ! lease <days> <hours> <minutes>
+  lease 7 12 0
+```
+
+DNS Configuration Example
+
+```
+! Define DNS server addresses
+ip name-server 8.8.8.8
+ip name-server 8.8.4.4
+
+! Associate a hostname with an IP address
+ip host myserver 192.168.1.10
+```
+
+![](https://img.examtopics.com/200-301/image150.png) 
 
 [Question](https://www.examtopics.com/discussions/cisco/view/107232-exam-200-301-topic-1-question-1080-discussion): Refer to the exhibit. All switches are configured with the default STP priorities. During the STP elections, which switch becomes the root bridge if all interfaces are in the same VLAN?
 
@@ -1015,7 +1035,7 @@ Which characteristic of distributed class-based weighted fair queueing addresses
 - C. MDF-DC-4: 0d:E0:19:A1:B3:19
 - D. MDF-DC-3: 0d:0E:18:2A:3C:9D
 
-**Question:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/107232-exam-200-301-topic-1-question-1080-discussion)
+**Suggested Answer:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/107232-exam-200-301-topic-1-question-1080-discussion)
 
 Which configuration ensures that the switch is always the root for VLAN 750?
 
@@ -1027,33 +1047,58 @@ Which configuration ensures that the switch is always the root for VLAN 750?
 [Question](https://www.examtopics.com/discussions/cisco/view/123304-exam-200-301-topic-1-question-1193-discussion): What is the operating mode and role of a backup port on a shared LAN segment in Rapid PVST+?
 
 - A. learning mode and provides the shortest path toward the root bridge handling traffic away from the LAN
-- B. blocking mode and provides an alternate path toward the designated bridge **Most Voted**
+- B. **blocking mode** and **provides an alternate path** toward the designated bridge **Most Voted**
 - C. forwarding mode and provides the lowest-cost path to the root bridge for each VLAN
 - D. listening mode and provides an alternate path toward the root bridge
 
-**Question:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/123304-exam-200-301-topic-1-question-1193-discussion)
+**Suggested Answer:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/123304-exam-200-301-topic-1-question-1193-discussion)
 
-In Rapid PVST+ (Rapid Per-VLAN Spanning Tree Plus), a backup port is a port that provides a redundant path to a segment where another bridge port already connects. The backup port is in a blocking state to prevent loops and does not handle traffic unless the designated port fails. When the designated port is functioning normally, the backup port does not actively use its path.
+In Rapid PVST+ (Rapid Per-VLAN Spanning Tree Plus), a **backup port** is a port that provides a redundant path to a segment where another bridge port already connects. The backup port is in a blocking state to prevent loops and **does not handle traffic unless the designated port fails**. When the designated port is functioning normally, the backup port does not actively use its path.
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/87856-exam-200-301-topic-1-question-760-discussion): What is the function of the controller in a software-defined network?
+[Question](https://www.examtopics.com/discussions/cisco/view/87856-exam-200-301-topic-1-question-760-discussion): What is the function of the controller in a software-defined network?
 
 - A. forwarding packets
 - B. multicast replication at the hardware level
 - C. making routing decisions
 - D. fragmenting and reassembling packets
 
-**Question:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/87856-exam-200-301-topic-1-question-760-discussion)
+**Suggested Answer:** _C_ [🗳️](https://www.examtopics.com/discussions/cisco/view/87856-exam-200-301-topic-1-question-760-discussion)
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/129741-exam-200-301-topic-1-question-1220-discussion): Which port type does a lightweight AP use to connect to the wired network when configured in FlexConnect mode with local switching and VLAN tagging?
+[Question](https://www.examtopics.com/discussions/cisco/view/129741-exam-200-301-topic-1-question-1220-discussion): Which port type does a lightweight AP use to connect to the wired network when configured in FlexConnect mode with local switching and VLAN tagging?
 
 - A. trunk
 - B. LAG
 - C. EtherChannel
 - D. access
 
-**Question:** _A_
+**Suggested Answer:** _A_
 
-When a lightweight access point (AP) is configured in FlexConnect mode with local switching and VLAN tagging, it is indeed necessary to use a trunk port on the switch to which the AP is connected. This allows the AP to handle multiple VLANs for different SSIDs.
+When a lightweight access point (AP) is configured in FlexConnect mode with local switching and VLAN tagging, it is indeed necessary to use a **trunk port** on the switch to which the AP is connected. **This allows the AP to handle multiple VLANs for different SSIDs.**
+
+**VLANs (Virtual Local Area Networks)**: VLANs are used to segment network traffic into different logical groups, even if they share the same physical infrastructure. This helps in isolating traffic, improving security, and managing network policies efficiently.
+
+**Different Sources**: If the SSIDs are coming from different sources (e.g., different routers or mobile Wi-Fi devices), each source operates independently and might be configured differently.
+
+In this scenario, each SSID is managed by a separate device. These devices may or may not be on the same network or VLAN.
+
+- **Router 1**: Broadcasting SSIDs "RURU_5G" and "RURU"
+- **Router 2**: Broadcasting SSID "42n11f"
+- **Mobile Wi-Fi Device**: Broadcasting SSID "leo"
+- **Modem/Router 3**: Broadcasting SSID "yamaha_5G"
+
+<img src="https://han.blob.core.windows.net/typora/image-20240712063106522.png" alt="image-20240712063106522" style="zoom:50%;" /> 
+
+Each of these devices is likely configured independently, and the SSIDs do not necessarily correspond to VLANs unless explicitly set up to do so in a network configuration.
+
+**Same Source**: If multiple SSIDs are being broadcast from the same router or access point, they can be managed to share the same or different VLANs depending on the configuration. If an access point is configured to broadcast multiple SSIDs, those SSIDs can be mapped to different VLANs for traffic segregation and management
+
+````txt
+interface GigabitEthernet0/1
+  description Connection to FlexConnect AP
+  switchport trunk encapsulation dot1q
+  switchport mode trunk
+  switchport trunk allowed vlan 10,20,30,40,50
+````
 
 When a lightweight access point (AP) is configured in FlexConnect mode with local switching and VLAN tagging, it typically uses a trunk port to connect to the wired network. This allows the AP to carry traffic for multiple VLANs, each identified by its VLAN tag.
 
@@ -1073,20 +1118,18 @@ write memory
 - Any untagged traffic received on this trunk link will be assigned to VLAN 99.
 - This ensures that management traffic, or any other untagged traffic, is correctly routed and associated with the designated VLAN.
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/99197-exam-200-301-topic-1-question-882-discussion): Which port type does a lightweight AP use to connect to the wired network when it is configured in local mode?
+[Question](https://www.examtopics.com/discussions/cisco/view/99197-exam-200-301-topic-1-question-882-discussion): Which port type does a lightweight AP use to connect to the wired network when it is configured in local mode?
 
 - A. EtherChannel
 - B. access **Most Voted**
 - C. LAG
 - D. trunk
 
-**Question:** _A_ [🗳️](https://www.examtopics.com/discussions/cisco/view/99197-exam-200-301-topic-1-question-882-discussion)
+**Suggested Answer:** _A_ [🗳️](https://www.examtopics.com/discussions/cisco/view/99197-exam-200-301-topic-1-question-882-discussion)
 
-> While the Cisco WLCs always connect to 802.1Q trunks, Cisco lightweight APs do not understand VLAN tagging and must only be connected to the access ports of the neighbor switch.
-> https://www.cisco.com/c/en/us/support/docs/wireless/4400-series-wireless-lan-controllers/69719-wlc-lwap-config.html
->
-> Thanks to CAPWAP data tunnel between the LAP and the WLC, the LAP does not need to know anything about VLANs.
-> https://study-ccna.com/lightweight-access-point-configuration/
+When a lightweight AP is configured in local mode, it typically uses an "access" port to connect to the wired network. An access port is a type of port on a network switch that is configured to carry traffic for only one VLAN. In this mode, the AP is essentially treated as a client device on the network, and it connects to a single VLAN on the switch. This allows the AP to receive configuration information and other management traffic from the controller, as well as to forward wireless traffic to the wired network.
+
+While the Cisco WLCs always connect to 802.1Q trunks, Cisco lightweight APs do not understand VLAN tagging and must only be connected to the **access ports** of the neighbor switch.
 
 How does CAPWAP communicate between an access point in local mode and a WLC?
 
@@ -1117,7 +1160,7 @@ Summary of the Standards
 
 ![](https://img.examtopics.com/200-301/image24.png)
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/99203-exam-200-301-topic-1-question-872-discussion): Refer to the exhibit. A Cisco WLC administrator is creating a new wireless network with enhanced SSID security. The new network must operate at 2.4 Ghz with 54 Mbps of throughput. Which set of tasks must the administrator perform to complete the configuration?
+[Question](https://www.examtopics.com/discussions/cisco/view/99203-exam-200-301-topic-1-question-872-discussion): Refer to the exhibit. A Cisco WLC administrator is creating a new wireless network with enhanced SSID security. The new network must operate at 2.4 Ghz with 54 Mbps of throughput. Which set of tasks must the administrator perform to complete the configuration?
 
 - A. Uncheck the Broadcast SSID check box and set the Radio Policy to 802.11a/g only.
 - B. Check the Broadcast SSID check box and set the Radio Policy to 802.11g only.
@@ -1146,16 +1189,16 @@ Why DFS Continues to Work in Standalone Mode:
 
 When a FlexConnect AP changes to standalone mode, all controller-dependent activities stop working except for DFS. This is because DFS is essential for regulatory compliance and must function correctly to prevent interference with radar systems, regardless of the AP's connection status to the WLC. Therefore, even in standalone mode, the AP must continue to monitor for radar signals and switch channels as necessary.
 
-![image-20240629160510180](https://han.blob.core.windows.net/typora/image-20240629160510180.png)
+![image-20240629160510180](https://han.blob.core.windows.net/typora/image-20240629160510180.png) 
 
-[Hide Answer](https://www.examtopics.com/discussions/cisco/view/33296-exam-200-301-topic-1-question-28-discussion): How does CAPWAP communicate between an access point in local mode and a WLC?
+[Question](https://www.examtopics.com/discussions/cisco/view/33296-exam-200-301-topic-1-question-28-discussion): How does CAPWAP communicate between an access point in local mode and a WLC?
 
 - A. The access point must not be connected to the wired network, as it would create a loop
 - B. The access point must be connected to the same switch as the WLC
 - C. The access point must directly connect to the WLC using a copper cable
 - D. The access point has the ability to link to any switch in the network, assuming connectivity to the WLC **Most Voted**
 
-**Question:** _D_ [🗳️](https://www.examtopics.com/discussions/cisco/view/33296-exam-200-301-topic-1-question-28-discussion)
+**Suggested Answer:** _D_ [🗳️](https://www.examtopics.com/discussions/cisco/view/33296-exam-200-301-topic-1-question-28-discussion)
 
 the correct answer is option D: "The access point has the ability to link to any switch in the network, assuming connectivity to the WLC." The AP can be connected to any switch in the network, as long as the switch has connectivity to the WLC. The AP and the WLC exchange CAPWAP messages over IP, using UDP port 5246 or 5247, depending on whether the messages are encrypted.
 
@@ -1163,7 +1206,7 @@ the correct answer is option D: "The access point has the ability to link to any
 
 Refer to the exhibit. Which two events occur on the interface, if packets from an unknown Source address arrive after the interface learns the maximum number of secure MAC address? (Choose two.)
 
-![](https://www.examtopics.com/assets/media/exam-media/04300/0049400001.png)
+![](https://www.examtopics.com/assets/media/exam-media/04300/0049400001.png) 
 
 - A. The security violation counter dose not increment
 - B. The port LED turns off
