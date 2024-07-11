@@ -113,7 +113,7 @@ This configuration ensures that only the designated VLANs are permitted across t
 1. Configure an LACP EtherChannel and number it as 44; configure it between switches SW1 and SW2 using interfaces Ethemet0/0 and Ethernet0/1 on both sides. The LACP mode must match on both ends.
 2. Configure the EtherChannel as a trunk link.
 3. Configure the trunk link with 802.1q tags.
-4. Configure VLAN 'MONITORING' as the untagged VLAN of the EtherChannel.
+4. Configure VLAN 'MONITORING' as the **untagged VLAN** of the EtherChannel.
 
 ![](https://img.examtopics.com/200-301/image107.png) 
 
@@ -156,7 +156,7 @@ SW2(config-if)# exit
 ```
 
 Assuming VLAN ID for 'MONITORING' is 100 (replace 100 with the actual VLAN ID if different). 
-What if we need to find a real vlan instead of assuming a vlan
+What if we need to find a real vlan instead of assuming a vlan?
 
 To find the actual VLAN ID for a VLAN named "MONITORING," you can use the `show vlan brief` command on a Cisco switch. This command will list all VLANs along with their IDs and names. Here’s how you can do it:
 
@@ -173,7 +173,7 @@ VLAN Name                             Status    Ports
 
 In the example above, the VLAN ID for "MONITORING" is `100`.
 
-Notion 1.  Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
+❗❗❗ Notion 1.  Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
 
 ````txt
 SW# configure terminal
@@ -181,6 +181,13 @@ SW(config)# interface ethernet0/0
 SW(config-if)# switchport trunk encapsulation dot1q
 SW(config-if)# switchport mode trunk
 ````
+
+If you try to set the port to trunk mode before the encapsulation type on certain switches, you might see an error like:
+
+```
+SW(config-if)# switchport mode trunk
+Command rejected: An encapsulation type must be set before setting the mode to trunk.
+```
 
 To verify the trunk configuration, use the following command:
 
@@ -249,21 +256,109 @@ SW1(config-if)# switchport trunk native vlan 100
 SW1(config-if)# exit
 ```
 
-**Differences and Considerations:**
+**Port-Channel vs. Physical Interfaces:**
 
-1. **Port-Channel vs. Physical Interfaces:**
-   - **Port-Channel Configuration:** When you configure the trunk settings on the port-channel interface, these settings apply to the aggregated link as a whole. This ensures consistency and simplifies the configuration.
-   - **Physical Interface Configuration:** If you configure trunk settings directly on the physical interfaces, these settings will apply to each interface individually. However, when these interfaces are part of a port-channel, the port-channel settings typically override the physical interface settings.
+- **Port-Channel Configuration:** When you configure the trunk settings on the port-channel interface, these settings apply to the aggregated link as a whole. This ensures consistency and simplifies the configuration.
+- **Physical Interface Configuration:** If you configure trunk settings directly on the physical interfaces, these settings will apply to each interface individually. However, when these interfaces are part of a port-channel, the port-channel settings typically **override the physical interface settings**.
 
-2. **Best Practice:**
-   - It is generally considered best practice to configure the trunk settings on the port-channel interface. This avoids potential inconsistencies and conflicts that may arise if individual physical interfaces have different settings.
-   - The settings configured on the port-channel interface will propagate to the member interfaces, ensuring uniformity.
+**Best Practice:**
 
-3. **Implications:**
-   - **Current Configuration (Port-Channel):** The trunk settings will be consistently applied to the entire port-channel link, which includes all member interfaces.
-   - **Proposed Configuration (Physical Interfaces):** If you apply the trunk settings directly to the physical interfaces, there is a potential for conflicts when the port-channel is formed, as the port-channel settings will take precedence.
+- It is generally considered best practice to configure the trunk settings on the port-channel interface. This avoids potential inconsistencies and conflicts that may arise if individual physical interfaces have different settings.
+- The settings configured on the port-channel interface will propagate to the member interfaces, ensuring uniformity.
+
+**Implications:**
+
+- **Current Configuration (Port-Channel):** The trunk settings will be consistently applied to the entire port-channel link, which includes all member interfaces.
+- **Proposed Configuration (Physical Interfaces):** If you apply the trunk settings directly to the physical interfaces, there is a potential for conflicts when the port-channel is formed, as the port-channel settings will take precedence.
 
 It is advisable to configure trunk settings on the port-channel interface rather than the individual physical interfaces. This approach simplifies management and ensures consistent application of trunk settings across the aggregated link.
+
+![image-20240613170528866](https://han.blob.core.windows.net/typora/image-20240613170528866.png) 
+
+Configuring LACP EtherChannel Between SW1 and SW2 Task Details:
+
+1. **Configure an LACP EtherChannel and number it as 1; configure it between switches SW1 and SW2 using interfaces Ethernet0/0 and Ethernet0/1 on both sides. The LACP mode must match on both ends.**
+2. **Configure the EtherChannel as a trunk link.**
+3. **Configure the trunk link with 802.1q tags.**
+4. **Configure the native VLAN of the EtherChannel as VLAN 15.**
+
+SW1 / SW2 Configuration
+
+**Create VLAN 15**:
+
+```txt
+SW1(config)# vlan 15
+SW1(config-vlan)# exit
+
+SW2(config)# vlan 15
+SW2(config-vlan)# exit
+```
+
+**Configure EtherChannel Using LACP**:
+
+```txt
+SW1(config)# interface range Ethernet0/0 - 1
+SW1(config-if-range)# channel-group 1 mode active
+SW1(config-if-range)# exit
+
+SW2(config)# interface range Ethernet0/0 - 1
+SW2(config-if-range)# channel-group 1 mode active
+SW2(config-if-range)# exit
+```
+
+**Configure EtherChannel as a Trunk**:
+
+```txt
+SW1(config)# interface port-channel 1
+SW1(config-if)# switchport trunk encapsulation dot1q
+SW1(config-if)# switchport mode trunk
+SW1(config-if)# switchport trunk native vlan 15
+SW1(config-if)# end
+SW1# copy running-config startup-config
+
+SW2(config)# interface port-channel 1
+SW2(config-if)# switchport trunk encapsulation dot1q
+SW2(config-if)# switchport mode trunk
+SW2(config-if)# switchport trunk native vlan 15
+SW2(config-if)# end
+SW2# copy running-config startup-config
+```
+
+Summary of Configuration Commands for SW1 and SW2
+
+```txt
+SW1# configure terminal
+SW1(config)# vlan 15
+SW1(config-vlan)# exit
+SW1(config)# interface range Ethernet0/0 - 1
+SW1(config-if-range)# channel-group 1 mode active
+SW1(config-if-range)# exit
+SW1(config)# interface port-channel 1
+SW1(config-if)# switchport trunk encapsulation dot1q
+SW1(config-if)# switchport mode trunk
+SW1(config-if)# switchport trunk native vlan 15
+SW1(config-if)# end
+SW1# copy running-config startup-config
+```
+
+```txt
+SW2# configure terminal
+SW2(config)# vlan 15
+SW2(config-vlan)# exit
+SW2(config)# interface range Ethernet0/0 - 1
+SW2(config-if-range)# channel-group 1 mode active
+SW2(config-if-range)# exit
+SW2(config)# interface port-channel 1
+SW2(config-if)# switchport trunk encapsulation dot1q
+SW2(config-if)# switchport mode trunk
+SW2(config-if)# switchport trunk native vlan 15
+SW2(config-if)# end
+SW2# copy running-config startup-config
+```
+
+These commands configure the LACP EtherChannel between SW1 and SW2, ensuring that both ends match and the necessary trunk settings are applied.
+
+
 
 [Task](https://www.examtopics.com/discussions/cisco/view/103866-exam-200-301-topic-1-question-1054-discussion/): All physical cabling between the two switches is installed. Configure the network connectivity between the switches using the designated VLANs and interfaces.
 
@@ -474,14 +569,19 @@ Task 2: Configure and Apply a Single NACL on Sw101
 ```plaintext
 enable
 configure terminal
+
 ip access-list extended ENT_ACL
-deny icmp host 192.168.200.10 host 192.168.100.10
-permit tcp host 192.168.200.10 any eq telnet
-deny tcp any any eq telnet
-permit ip any any
-interface vlan 200
-ip access-group ENT_ACL in
+  deny icmp host 192.168.100.10 host 192.168.200.10
+  permit tcp host 192.168.200.10 any eq 23
+  deny tcp any any eq 23
+  permit ip any any
 end
+
+interface vlan 200
+  ip access-group ENT_ACL in
+end
+
+wr 
 ```
 
 Task 3: Configure Security on Interface Ethernet 0/0 of Sw102
@@ -1167,19 +1267,19 @@ Verify Configuration
 
 ![](https://img.examtopics.com/200-301/image113.png) 
 
-1. All traffic sent from R3 to the R1 Loopback address must be configured for NAT on R2. All source addresses must be translated from R3 to the IP address of Ethernet0/0 on R2, while using only a standard access list named PUBNET. To verify, a ping must be successful to the R1 Loopback address sourced from R3. Do not use NVI NAT configuration.
+1. All traffic sent from R3 to the R1 Loopback address must be configured for NAT on R2. All source addresses must be translated from R3 to the IP address of Ethernet0/0 on R2, while using only a standard access list named **PUBNET**. To verify, a ping must be successful to the R1 Loopback address sourced from R3. **Do not use NVI NAT configuration.**
 2. Configure R1 as an NTP server and R2 as a client, not as a peer, using the IP address of the R1 Ethernet0/2 interface. Set the clock on the NTP server for midnight on May 1, 2018.
 3. Configure R1 as a DHCP server for the network 10.1.3.0/24 in a ✔**pool named NETPOOL**. Using a single command, exclude addresses 1 - 10 from the range. Interface Ethernet0/2 on R3 must be issued the IP address of 10.1.3.11 via DHCP.
-4. Configure SSH connectivity from R1 to R3, while excluding access via other remote connection protocols. Access for user netadmin and password N3t4ccess must be set on router R3 using RSA and 1024 bits. Verify connectivity using an SSH session from router R1 using a destination address of 10.1.3.11. Do NOT modify console.
+4. Configure SSH connectivity from R1 to R3, while excluding access via other remote connection protocols. Access for user netadmin and password N3t4ccess must be set on router R3 **using RSA and 1024 bits**. Verify connectivity using an SSH session from router R1 using a destination address of 10.1.3.11. Do NOT modify console.
 
 General Overview
 
 ````txt
 NAT:
 R2(config)# ip access list standard PUBNET
-R2(config-std-nacl)# permit 10.2.3.3
-R2(config-std-nacl)# permit 10.1.3.11
-R2(config-std-nacl)# permit 192.168.3.1
+👀(e0/1 from R3) R2(config-std-nacl)# permit 10.2.3.3
+👀(e0/2 from R3) R2(config-std-nacl)# permit 10.1.3.11
+👀(Lo0  from R3) R2(config-std-nacl)# permit 192.168.3.1
 R2(config-std-nacl)# exit
 R2(config)# interface e0/1
 R2(config-if)# ip nat inside
@@ -1193,7 +1293,7 @@ R1(config)# ntp master 1
 R2(config)# ntp server 10.1.3.1
 
 DHCP:
-R1(config)# ip dhcp pool👀 NETPOOL
+👀 R1(config)# ip dhcp pool NETPOOL
 R1(dhcp-config)# network 10.1.3.0 255.255.255.0
 R1(config)# exit
 R1(config)# ip dhcp excluded-address 10.1. 3.1 10.1.3.10
@@ -1207,11 +1307,12 @@ R3(config-line)# login local
 R3(config-line)# exit
 R3(config)# host R3
 R3(config)# ip domain-name cisco.com
-R3(config)# crypto key generate rsa
+R3(config)# crypto key generate rsa modulus 1024
 
 ✨SSH (abbreviated command version):
 R3(config)# host R3
 R3(config)# user netadmin pass N3t4ccess
+R3(config)# crypto key generate rsa modulus 1024
 R3(config)# line vty 0 4
 R3(config-line)# log loc
 R3(config-line)# exit
@@ -1219,72 +1320,13 @@ R3(config)# ip dom-name cisco.com
 R3(config)# cry key gen rsa mod 2048
 ````
 
-NAT:
-
-````txt
-R2(config)# ip access-list standard PUBNET
-R2(config-std-nacl)# permit 10.2.3.3
-R2(config-std-nacl)# permit 10.1.3.11
-R2(config-std-nacl)# permit 192.168.3.1
-R2(config-std-nacl)# exit
-
-R2(config)# interface e0/1
-R2(config-if)# ip nat inside
-R2(config)# interface e0/0
-R2(config-if)# ip nat outside
-
-R2(config)# ip nat inside source list PUBNET interface e0/0 overload
-````
-
-NTP:
-
-````
-R1(config)# clock set 00:00:00 jan 1 2019
-R1(config)# ntp master 1
-R2(config)# ntp server 10.1.3.1
-````
-
-DHCP
-
-````txt
-R1(config)# ip dhcp pool NETPOOL
-R1(dhcp-config)# network 10.1.3.0 255.255.255.0
-R1(config)# exit
-R1(config)# ip dhcp excluded-address 10.1. 3.1 10.1.3.10
-````
-
- NTP: Make sure that R3's Ethernet0/2 interface is configured to receive an IP address via DHCP. Enter Interface Configuration Mode for Ethernet0/2 on R3
-
-````txt
-R3(config)# interface Ethernet0/2
-R3(config-if)# ip address dhcp
-R3(config-if)# no shutdown
-````
-
-SSH
-
-````txt
-R3(config)# username netadmin privilege 15 secret N3t4ccess
-R3(config)# ip domain-name example.com (cisco.com)
-R3(config)# crypto key generate rsa general-keys modulus 1024
-R3(config)# ip ssh version 2
-R3(config)# line vty 0 4
-R3(config-line)# login local
-R3(config-line)# transport input ssh
-R3(config-line)# exit
-````
-
-<div style="page-break-after: always;"></div>
-
-
-
 [Question](https://www.examtopics.com/discussions/cisco/view/128567-exam-200-301-topic-1-question-1258-discussion/): R1 and R2 are pre-configured with all the necessary commands. All physical cabling is in place and verified. Connectivity for PC1 and PC2 must be established to the switches; each port must only allow one VLAN and be operational.
 
 1. Configure SW-1 with VLAN 15 and label it exactly as OPS
 2. Configure SW-2 with VLAN 66 and label it exactly as ENGINEERING
 3. Configure the switch port connecting to PC1
 4. Configure the switch port connecting to PC2
-5. Configure the E0/2 connections on SW-1 and SW-2 for neighbor discovery using the vendor-neutral standard protocol and ensure that E0/0 on both switches uses the Cisco proprietary protocol
+5. Configure the E0/2 connections on SW-1 and SW-2 for neighbor discovery using the **vendor-neutral standard protocol** and ensure that E0/0 on both switches uses the **Cisco proprietary protocol**
 
 ![](https://img.examtopics.com/200-301/image286.png) 
 
@@ -1316,14 +1358,14 @@ Switch(config)#in e0/2
 Switch(config-if)#no cdp enable
 Switch(config-if)#lldp transmit
 Switch(config-if)#lldp receive
+Switch(config-if)#sw tr en dot1q
+Switch(config-if)#sw mo tr
+end
 
 Switch(config)#in e0/0
 Switch(config-if)#no lldp transmit
 Switch(config-if)#no lldp receive
 Switch(config-if)#cdp enable
-
-Switch(config-if)#sw tr en dot1q
-Switch(config-if)#sw mo tr
 end
 
 copy r st
@@ -1331,21 +1373,21 @@ copy r st
 
 Configuration Comparison between 801.1q and ISL:
 
-- **ISL Encapsulation:**
+**ISL Encapsulation:**
 
-  ```
-  Switch(config)# interface e0/0
-  Switch(config-if)# switchport trunk encapsulation isl
-  Switch(config-if)# switchport mode trunk
-  ```
+```
+Switch(config)# interface e0/0
+Switch(config-if)# switchport trunk encapsulation isl
+Switch(config-if)# switchport mode trunk
+```
 
-- **802.1Q Encapsulation:**
+**802.1Q Encapsulation:**
 
-  ```
-  Switch(config)# interface e0/0
-  Switch(config-if)# switchport trunk encapsulation dot1q
-  Switch(config-if)# switchport mode trunk
-  ```
+```
+Switch(config)# interface e0/0
+Switch(config-if)# switchport trunk encapsulation dot1q
+Switch(config-if)# switchport mode trunk
+```
 
 **ISL** is a Cisco proprietary protocol, less commonly used today.
 **802.1Q (dot1q)** is the industry standard, widely used across different vendors' equipment.
@@ -1423,92 +1465,7 @@ Explanation
 - **Default Route on R1**: The default route points to the ISP through the next hop IP 209.165.201.2.
 - **Default Route on R3**: The default route points to the ISP through the next hop IP 209.165.201.1.
 
- ![image-20240613170528866](https://han.blob.core.windows.net/typora/image-20240613170528866.png) 
-
-Configuring LACP EtherChannel Between SW1 and SW2 Task Details:
-
-1. **Configure an LACP EtherChannel and number it as 1; configure it between switches SW1 and SW2 using interfaces Ethernet0/0 and Ethernet0/1 on both sides. The LACP mode must match on both ends.**
-2. **Configure the EtherChannel as a trunk link.**
-3. **Configure the trunk link with 802.1q tags.**
-4. **Configure the native VLAN of the EtherChannel as VLAN 15.**
-
-SW1 / SW2 Configuration
-
-**Create VLAN 15**:
-
-```shell
-SW1(config)# vlan 15
-SW1(config-vlan)# exit
-
-SW2(config)# vlan 15
-SW2(config-vlan)# exit
-```
-
-**Configure EtherChannel Using LACP**:
-
-```shell
-SW1(config)# interface range Ethernet0/0 - 1
-SW1(config-if-range)# channel-group 1 mode active
-SW1(config-if-range)# exit
-
-SW2(config)# interface range Ethernet0/0 - 1
-SW2(config-if-range)# channel-group 1 mode active
-SW2(config-if-range)# exit
-```
-
-**Configure EtherChannel as a Trunk**:
-
-```shell
-SW1(config)# interface port-channel 1
-SW1(config-if)# switchport trunk encapsulation dot1q
-SW1(config-if)# switchport mode trunk
-SW1(config-if)# switchport trunk native vlan 15
-SW1(config-if)# end
-SW1# copy running-config startup-config
-
-SW2(config)# interface port-channel 1
-SW2(config-if)# switchport trunk encapsulation dot1q
-SW2(config-if)# switchport mode trunk
-SW2(config-if)# switchport trunk native vlan 15
-SW2(config-if)# end
-SW2# copy running-config startup-config
-```
-
-Summary of Configuration Commands for SW1 and SW2
-
-```shell
-SW1# configure terminal
-SW1(config)# vlan 15
-SW1(config-vlan)# exit
-SW1(config)# interface range Ethernet0/0 - 1
-SW1(config-if-range)# channel-group 1 mode active
-SW1(config-if-range)# exit
-SW1(config)# interface port-channel 1
-SW1(config-if)# switchport trunk encapsulation dot1q
-SW1(config-if)# switchport mode trunk
-SW1(config-if)# switchport trunk native vlan 15
-SW1(config-if)# end
-SW1# copy running-config startup-config
-```
-
-```shell
-SW2# configure terminal
-SW2(config)# vlan 15
-SW2(config-vlan)# exit
-SW2(config)# interface range Ethernet0/0 - 1
-SW2(config-if-range)# channel-group 1 mode active
-SW2(config-if-range)# exit
-SW2(config)# interface port-channel 1
-SW2(config-if)# switchport trunk encapsulation dot1q
-SW2(config-if)# switchport mode trunk
-SW2(config-if)# switchport trunk native vlan 15
-SW2(config-if)# end
-SW2# copy running-config startup-config
-```
-
-These commands configure the LACP EtherChannel between SW1 and SW2, ensuring that both ends match and the necessary trunk settings are applied.
-
-![image-20240613170614754](https://han.blob.core.windows.net/typora/image-20240613170614754.png)
+ ![image-20240613170614754](https://han.blob.core.windows.net/typora/image-20240613170614754.png)
 
 ![image-20240614083622370](https://han.blob.core.windows.net/typora/image-20240614083622370.png)
 
