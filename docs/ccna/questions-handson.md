@@ -106,7 +106,7 @@ Summary of Configurations:
     - VLAN 202 is assigned to interface e0/0 and VLAN 303 to interface e0/1.
     - Interface e0/3 is configured as a trunk allowing VLANs 202 and 303.
 
-This configuration ensures that only the designated VLANs are permitted across the trunk links and assigned to the appropriate interfaces.
+---
 
 [Task](https://www.examtopics.com/discussions/cisco/view/101207-exam-200-301-topic-1-question-1041-discussion/#): Physical connectivity is implemented between the two Layer 2 switches, and the network connectivity between them must be configured.
 
@@ -173,7 +173,7 @@ VLAN Name                             Status    Ports
 
 In the example above, the VLAN ID for "MONITORING" is `100`.
 
-❗ Notion 1.  Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
+‼️Notion 1.  Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
 
 ````txt
 SW# configure terminal
@@ -1158,13 +1158,13 @@ Step 1: Configure SW-2 and SW-3 ports E0/0 to use the industry standard encapsul
 
 ```plaintext
 SW-2(config)# interface e0/0
-❗ SW-2(config-if)# switchport trunk encapsulation dot1q
+‼️SW-2(config-if)# switchport trunk encapsulation dot1q
 SW-2(config-if)# switchport mode trunk
 SW-2(config-if)# switchport trunk allowed vlan 10
 SW-2(config-if)# exit
 
 SW-3(config)# interface e0/0
-❗ SW-3(config-if)# switchport trunk encapsulation dot1q
+‼️SW-3(config-if)# switchport trunk encapsulation dot1q
 SW-3(config-if)# switchport mode trunk
 SW-3(config-if)# switchport trunk allowed vlan 10
 SW-3(config-if)# exit
@@ -1172,7 +1172,7 @@ SW-3(config-if)# exit
 
 ![image-20240708144720759](https://han.blob.core.windows.net/typora/image-20240708144720759.png) 
 
-❗❗❗ The error i'm encountering indicates that the `switchport trunk encapsulation dot1q` command is not recognized. This might happen for a few reasons, primarily related to the switch model and IOS version i'm using. On some Cisco switches, particularly newer models, the trunk encapsulation is fixed to `dot1q` and does not need to be specified explicitly.
+‼️ The error i'm encountering indicates that the `switchport trunk encapsulation dot1q` command is not recognized. This might happen for a few reasons, primarily related to the switch model and IOS version i'm using. On some Cisco switches, particularly newer models, the trunk encapsulation is fixed to `dot1q` and does not need to be specified explicitly.
 
 Step 2: Configure SW-2 and SW-3 ports E0/0 to send and receive untagged traffic over VLAN 11
 
@@ -1202,7 +1202,7 @@ SW-3(config-if-range)# switchport trunk encapsulation dot1q
 SW-3(config-if-range)# exit
 ```
 
-❗ By default, when you configure a switch port as a trunk, it will allow all VLANs to pass through unless explicitly restricted. The command `switchport trunk allowed vlan all` is essentially redundant because it specifies the default behavior.
+‼️By default, when you configure a switch port as a trunk, it will allow all VLANs to pass through unless explicitly restricted. The command `switchport trunk allowed vlan all` is essentially redundant because it specifies the default behavior.
 
 Step 4: Configure SW-2 and SW-3 ports E0/2 and E0/3 for link aggregation using the industry standard protocol with the given requirements
 
@@ -1386,7 +1386,7 @@ Switch(config-if)# switchport mode trunk
 
 ### Questions with Screenshot
 
-![image-20240613170429555](https://han.blob.core.windows.net/typora/image-20240613170429555.png)
+<img src="https://han.blob.core.windows.net/typora/image-20240613170429555.png" alt="image-20240613170429555" style="zoom:60%;" />  
 
 Static Routing Configuration for End-to-End Connectivity Task Details:
 
@@ -1457,30 +1457,31 @@ Explanation
 - **Default Route on R1**: The default route points to the ISP through the next hop IP 209.165.201.2.
 - **Default Route on R3**: The default route points to the ISP through the next hop IP 209.165.201.1.
 
- ![image-20240613170614754](https://han.blob.core.windows.net/typora/image-20240613170614754.png)
+ <img src="https://han.blob.core.windows.net/typora/image-20240613170614754.png" alt="image-20240613170614754" style="zoom:40%;" /> 
 
-![image-20240614083622370](https://han.blob.core.windows.net/typora/image-20240614083622370.png)
+<img src="https://han.blob.core.windows.net/typora/image-20240614083622370.png" alt="image-20240614083622370" style="zoom:40%;" /> 
 
 Task 1: Configure a Local Account on Sw103
+**Switch Configuration Mode**:
 
-1. **Switch Configuration Mode**:
-   ```shell
-   Switch# enable
-   Switch# configure terminal
-   Switch(config)# username devnet privilege 15 algorithm-type sha256 secret access8cli
-   Switch(config)# line vty 0 4
-   Switch(config-line)# login local
-   ```
+```shell
+Switch# enable
+Switch# configure terminal
+Switch(config)# username devnet privilege 15 algorithm-type sha256 secret access8cli
+Switch(config)# line vty 0 4
+Switch(config-line)# login local
+```
 
 Task 2: Modify the Named ACL (INTERNET_ACL)
 
 1. **Allow HTTPS from 172.16.0.0/16**:
+   
    ```shell
    R1# configure terminal
    R1(config)# ip access-list extended INTERNET_ACL
    R1(config-ext-nacl)# permit tcp 172.16.0.0 0.0.255.255 any eq https
    ```
-
+   
 2. **Allow Telnet Only for VLAN 101**:
    ```shell
    R1(config-ext-nacl)# permit tcp any 172.16.101.0 0.0.0.255 eq telnet
@@ -1495,8 +1496,6 @@ Task 2: Modify the Named ACL (INTERNET_ACL)
    R1(config-ext-nacl)# permit tcp any 172.16.101.0 0.0.0.255 eq 23
    R1(config-ext-nacl)# deny ip any any log
    ````
-
-   
 
 3. **Restrict All Other Traffic and Log Details**:
 
@@ -1530,8 +1529,6 @@ Task 3: Configure DHCP Snooping on Sw101
    ```shell
    Switch(config)# ip dhcp snooping verify mac-address
    ```
-
-Summary of Commands with Prompts
 
 **Sw103 Configuration**:
 
@@ -1576,9 +1573,7 @@ Switch101(config)# no ip dhcp snooping information option
 Switch101(config)# ip dhcp snooping verify mac-address
 ```
 
-
-
- Let's break down the addressing scheme and ensure we correctly configure the routes based on the given network topology.
+Let's break down the addressing scheme and ensure we correctly configure the routes based on the given network topology.
 
 Network Topology Breakdown:
 
