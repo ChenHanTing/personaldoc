@@ -47,7 +47,7 @@ Keith Barker's acronym for OSPF neighborship: TAN - MAT. These must match in OSP
 
 Question: Refer to the exhibit. What is the effect of this configuration?
 
-![img](https://www.examtopics.com/assets/media/exam-media/04300/0051400001.png)
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0051400001.png) 
 
 - ✅ A. The switch discards all ingress ARP traffic with invalid MAC-to-IP address bindings. **Most Voted**
 - B. All ARP packets are dropped by the switch.
@@ -58,7 +58,7 @@ The exhibit shows a configuration snippet for Dynamic ARP Inspection (DAI) on a 
 
 [Question](https://www.examtopics.com/discussions/cisco/view/99483-exam-200-301-topic-1-question-974-discussion/#): Refer to the exhibit. A network administrator must permit traffic from the 10.10.0.0/24 subnet to the WAN on interface Serial0. What is the effect of the configuration as the administrator applies the command?
 
-![img](https://img.examtopics.com/200-301/image86.png)
+![img](https://img.examtopics.com/200-301/image86.png) 
 
 - A. The router accepts all incoming traffic to Serial0 with the last octet of the source IP set to 0.
 - B. The permit command fails and returns an error code.
@@ -68,6 +68,8 @@ The exhibit shows a configuration snippet for Dynamic ARP Inspection (DAI) on a 
 **Suggested Answer:** _B_ [🗳️](https://www.examtopics.com/discussions/cisco/view/99483-exam-200-301-topic-1-question-974-discussion/#)
 
 The permit command does not fail, it is syntactically correct even though the ACL would not work as intended because it would not allow traffic from the 10.10.0.0/24 subnet. The answer is C because ip access-list 10 in is not a valid command and is rejected. The correct command would be ip access-group 10 in.
+
+![image-20240712084209882](https://han.blob.core.windows.net/typora/image-20240712084209882.png) 
 
 Question: Which QoS Profile is selected in the GUI when configuring a voice over WLAN deployment?
 
@@ -84,7 +86,7 @@ WLAN Quality of Service (QoS) list:
 - Bronze (background)
   Bronze---->FTP
 
-![img](https://www.examtopics.com/assets/media/exam-media/04300/0049700001.png)
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0049700001.png) 
 
 [Question](https://www.examtopics.com/discussions/cisco/view/19863-exam-200-301-topic-1-question-611-discussion/#): Refer to the exhibit. What is the effect of this configuration?
 
@@ -103,7 +105,7 @@ Question: Refer to the exhibit. An OSPF neighbor relationship must be configured
 ✑ R1 will use a router-id of 10.1.1.1.
 Which configuration must be used?
 
-![img](https://www.examtopics.com/assets/media/exam-media/04300/0041100004.png)
+![img](https://www.examtopics.com/assets/media/exam-media/04300/0041100004.png) 
 
 OSPF uses port 89 and does not use a transport protocol. A is the answer. EIGRP port 88.
 

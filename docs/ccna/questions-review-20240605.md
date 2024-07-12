@@ -182,6 +182,10 @@ Mainly to show DUAL is for EIGRP, not OSPF. The dual algorithm is specific to EI
 
 This is a bad question because AES Is technically correct, SAE is the handshake mechanism WPA 3 uses, it protects against offline dictionary attacks, and by the way the question is worded it's probably A, but D is correct as the actual encryption is AES for WPA 2 AND WPA 3. Thus AES is what is protecting all the data, but SAE is an enhancement WPA 3 has over WPA.
 
+![image-20240712092713486](https://han.blob.core.windows.net/typora/image-20240712092713486.png) 
+
+**SAE (Simultaneous Authentication of Equals)**: WPA3 uses SAE, which is a secure key establishment protocol between devices. SAE is resistant to offline dictionary attacks, enhancing security significantly compared to WPA2.
+
 [Question](https://www.examtopics.com/discussions/cisco/view/31735-exam-200-301-topic-1-question-528-discussion/): Which command must be entered when a device is configured as an NTP server?
 
 - A. ntp peer
@@ -570,7 +574,7 @@ Two conditions must be met before SSH can operate normally on a Cisco IOS switch
 - The Cisco IOS image used must be a k9(crypto) image in order to support SSH.
 - Configure the DNS domain of the router.
 
-![image-20240605170753502](https://han.blob.core.windows.net/typora/image-20240605170753502.png)
+![image-20240605170753502](https://han.blob.core.windows.net/typora/image-20240605170753502.png) 
 
 **B is incorrect**: Private IP addresses do not provide direct connectivity for external hosts. In fact, private IP addresses are specifically non-routable on the public internet. To communicate with external networks, NAT or a similar translation mechanism must be used to map private addresses to public IP addresses.
 

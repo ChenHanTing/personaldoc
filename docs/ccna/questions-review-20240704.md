@@ -6,7 +6,7 @@
 
 2. 解題方法: 截圖標記眼睛比較不會花
 
-   ![image-20240704162934002](https://han.blob.core.windows.net/typora/image-20240704162934002.png)
+   ![image-20240704162934002](https://han.blob.core.windows.net/typora/image-20240704162934002.png) 
 
 ### Questions
 
@@ -57,7 +57,7 @@ Answer correct:
 
 - **SSID** is not the correct answer because it is used for network **identification** and selection, not for the actual authentication process.
 
-​ ![image-20240704101601829](https://han.blob.core.windows.net/typora/image-20240704101601829.png)
+ ![image-20240704101601829](https://han.blob.core.windows.net/typora/image-20240704101601829.png)
 
 ![image-20240704101040709](https://han.blob.core.windows.net/typora/image-20240704101040709.png)
 
