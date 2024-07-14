@@ -901,6 +901,10 @@ This configuration sets up link aggregation (EtherChannel) on these ports with n
 3. Using a host wildcard mask, configure all three routers to **advertise their respective Loopback1** networks.
 4. Configure the link between R1 and R3 to disable their ability to add other OSPF routers.
 
+**Advertising a Subnet (192.168.1.0/24): **Use the `network 192.168.1.0 0.0.0.255 area 0` command when you want to include all interfaces in the `192.168.1.0/24` subnet in the OSPF process. This is typical for Ethernet segments or any situation where multiple devices on a subnet need to be included in OSPF.
+
+**Advertising a Single Interface (192.168.1.1/32):** Use the `network 192.168.1.1 0.0.0.0 area 0` command when you want to include only a specific interface in the OSPF process. This is common for loopback interfaces or when you have a specific IP address that you want to advertise in OSPF without including the whole subnet.
+
 **Step 1: Configure Router IDs**
 For R1 and R2, configure the Router IDs using the interface IP addresses from the link shared between them (10.10.12.1 and 10.10.12.2).
 
@@ -1040,7 +1044,7 @@ ping 2001:db8:acca::1
 1. Configure SW-1 port E0/0 to permit only VLANS 5 and 6
 2. Configure both SW-1 and SW-2's E0/1 ports to send and receive untagged traffic over VLAN 77
 3. Configure SW-2 E0/2 port to permit only VLAN 6
-4. Configure both SW-3 and SW-4 ports e0/0 and e0/1 for link aggregation using the industry standard protocol with the following requirements:
+4. Configure both SW-3 and SW-4 ports e0/0 and e0/1 for link aggregation using the **industry standard protocol** with the following requirements:
 
 - SW-3 ports **must immediately negotiate** the aggregation protocol
 - SW-4 ports **must not initiate the negotiation** for the aggregation protocol
