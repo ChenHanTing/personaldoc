@@ -362,6 +362,12 @@ In networking and computing, the term **chassis** refers to the physical framewo
 - **Function**: The SDN controller can create, manage, and coordinate VTNs, which are virtual networks that provide network segmentation and isolation within a physical network.
 - **Key Role**: VTNs are essential for multi-tenant environments where network resources need to be logically partitioned.
 
+SDN Controller Functions
+
+**Managing the Topology** - **Correct (B)**: One of the primary functions of an SDN controller is to manage the network topology. The SDN controller maintains a global view of the network, including the topology, and uses this information to make forwarding decisions, optimize paths, and manage network resources.
+
+**Coordinating Virtual Tenant Networks (VTNs)** - **Correct (D)**: An SDN controller coordinates VTNs, which are logical or virtual networks created over a physical network infrastructure. The controller manages the creation, configuration, and operation of these virtual networks, ensuring that they function correctly over the physical infrastructure.
+
 ![image-20240712163832798](https://han.blob.core.windows.net/typora/image-20240712163832798.png) 
 
 B is correct. In the absence of a manually configured router ID and loopback interfaces, OSPF will choose the highest IP address on any active physical interface.
