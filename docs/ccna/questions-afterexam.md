@@ -103,7 +103,7 @@ To configure SW1 and SW2 to form a vendor-neutral EtherChannel, you can use Link
 1. Create the EtherChannel group using LACP.
 2. Configure the interfaces that will participate in the EtherChannel.
 
-```bash
+```txt
 ! SW1 Configuration
 interface range Ethernet0/0 - 1
   channel-group 1 mode active
@@ -119,7 +119,7 @@ interface Port-channel1
 1. Create the EtherChannel group using LACP.
 2. Configure the interfaces that will participate in the EtherChannel.
 
-```bash
+```txt
 ! SW2 Configuration
 interface range Ethernet0/0 - 1
   channel-group 1 mode active
@@ -157,14 +157,14 @@ ping 10.0.1.x
 
 Ensure the VLANs are properly configured and that both switches have the correct VLANs allowed on the trunk ports.
 
-```bash
+```txt
 ! SW1 Configuration
 interface Port-channel1
   switchport trunk allowed vlan add 1,10,20
   exit
 ```
 
-```bash
+```txt
 ! SW2 Configuration
 interface Port-channel1
   switchport trunk allowed vlan add 1,10,20
