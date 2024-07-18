@@ -1,6 +1,12 @@
 
 
-# TEST Content according to inkling
+# All you should know before you enroll
+
+![image-20240710103513987](https://han.blob.core.windows.net/typora/image-20240710103513987.png) 
+
+註冊時名字一定要填護照名
+
+# Testing content according to Inkling
 
 <img src="https://han.blob.core.windows.net/typora/image-20240715224424796.png" alt="image-20240715224424796" style="zoom:50%;" />   
 
@@ -172,3 +178,54 @@ interface Port-channel1
 ```
 
 With these configurations, SW1 and SW2 should form a vendor-neutral EtherChannel, and PC1 should be able to ping PC2 through the aggregated logical link.
+
+[考古題](https://www.examtopics.com/discussions/cisco/view/128567-exam-200-301-topic-1-question-1258-discussion/): R1 and R2 are pre-configured with all the necessary commands. All physical cabling is in place and verified. Connectivity for PC1 and PC2 must be established to the switches; each port must only allow one VLAN and be operational.
+
+1. Configure SW-1 with VLAN 15 and label it exactly as OPS
+2. Configure SW-2 with VLAN 66 and label it exactly as ENGINEERING
+3. Configure the switch port connecting to PC1
+4. Configure the switch port connecting to PC2
+5. Configure the E0/2 connections on SW-1 and SW-2 for neighbor discovery using the **vendor-neutral standard protocol** and ensure that E0/0 on both switches uses the **Cisco proprietary protocol**
+
+![](https://img.examtopics.com/200-301/image286.png) 
+
+````txt 
+Task 1:
+Sw1(config)#vl 15
+Sw1(config-vlan)#name OPS
+
+Task 2:
+Sw2(config)#vl 66
+Sw2(config-vlan)#na ENGINEERING
+
+Task 3:
+Sw1(config)#in fa0/1
+Sw1(config-if)#no sh
+Sw1(config-if)#sw mo acc
+Sw1(config-if)#sw acc vl 15
+
+Task 4:
+Sw2(config)#in fa0/1
+Sw2(config-if)#no sh
+Sw2(config-if)#sw mo acc
+Sw2(config-if)#sw acc vl 66
+
+Task 5 SW1 & SW2:
+Switch(config)#lldp run
+
+Switch(config)#in e0/2
+Switch(config-if)#no cdp enable
+Switch(config-if)#lldp transmit
+Switch(config-if)#lldp receive
+Switch(config-if)#sw tr en dot1q
+Switch(config-if)#sw mo tr
+end
+
+Switch(config)#in e0/0
+Switch(config-if)#no lldp transmit
+Switch(config-if)#no lldp receive
+Switch(config-if)#cdp enable
+end
+
+copy r st
+````
