@@ -1,14 +1,12 @@
-
-
 # All you should know before you enroll
 
-![image-20240710103513987](https://han.blob.core.windows.net/typora/image-20240710103513987.png) 
+![image-20240710103513987](https://han.blob.core.windows.net/typora/image-20240710103513987.png)
 
 註冊時名字一定要填護照名
 
 # Testing content according to Inkling
 
-<img src="https://han.blob.core.windows.net/typora/image-20240715224424796.png" alt="image-20240715224424796" style="zoom:50%;" />   
+<img src="https://han.blob.core.windows.net/typora/image-20240715224424796.png" alt="image-20240715224424796" />
 
 **Diagram 1:**
 
@@ -30,7 +28,7 @@
 - R1, R2, and R3 should form an OSPF (Open Shortest Path First) network.
 - OSPF neighbor relationships should not be set globally but individually.
 
-**Tasks:** 
+**Tasks:**
 
 1. Configure R1, R2, and R3 to establish OSPF neighbor relationships using Process ID 123 on their respective interfaces without using the global `network` command.
 2. Ensure R1 is elected as the DR and R2, R3 do not participate in the DR/BDR election.
@@ -41,7 +39,7 @@ Based on the diagram and the requirements provided, here's how to configure the 
 
 1. **Set R1 to be the OSPF DR (Designated Router):**
 
-   This can be done by setting the OSPF priority higher on R1 and setting it lower on R2 and R3. 
+   This can be done by setting the OSPF priority higher on R1 and setting it lower on R2 and R3.
 
    ```bash
    ! Configuration for R1
@@ -72,12 +70,12 @@ Based on the diagram and the requirements provided, here's how to configure the 
    router ospf 123
     network 192.168.1.0 0.0.0.3 area 0
     network 192.168.3.0 0.0.0.3 area 0
-   
+
    ! Configuration for R2
    router ospf 123
     network 192.168.1.0 0.0.0.3 area 0
     network 192.168.2.0 0.0.0.3 area 0
-   
+
    ! Configuration for R3
    router ospf 123
     network 192.168.2.0 0.0.0.3 area 0
@@ -86,7 +84,7 @@ Based on the diagram and the requirements provided, here's how to configure the 
 
 This setup ensures that R1 will always be the Designated Router (DR), and R2 and R3 will not participate in the election. Additionally, OSPF neighbor relationships are formed only between the specified interfaces. If you need more specific details or further assistance, feel free to ask!
 
-<img src="https://han.blob.core.windows.net/typora/image-20240715224404029.png" alt="image-20240715224404029" style="zoom:40%;" />     
+<img src="https://han.blob.core.windows.net/typora/image-20240715224404029.png" alt="image-20240715224404029" />
 
 **Diagram 2:**
 
@@ -145,7 +143,7 @@ interface Port-channel1
 show etherchannel summary
 ```
 
-**Ping Test from PC1 to PC2:** Ensure that the PCs are properly configured with IP addresses and that they can ping each other. 
+**Ping Test from PC1 to PC2:** Ensure that the PCs are properly configured with IP addresses and that they can ping each other.
 
 PC1:
 
@@ -187,9 +185,9 @@ With these configurations, SW1 and SW2 should form a vendor-neutral EtherChannel
 4. Configure the switch port connecting to PC2
 5. Configure the E0/2 connections on SW-1 and SW-2 for neighbor discovery using the **vendor-neutral standard protocol** and ensure that E0/0 on both switches uses the **Cisco proprietary protocol**
 
-![](https://img.examtopics.com/200-301/image286.png) 
+![](https://img.examtopics.com/200-301/image286.png)
 
-````txt 
+```txt
 Task 1:
 Sw1(config)#vl 15
 Sw1(config-vlan)#name OPS
@@ -228,4 +226,4 @@ Switch(config-if)#cdp enable
 end
 
 copy r st
-````
+```

@@ -440,9 +440,9 @@ interface port-channel 1
  ip access-group 100 out  ! Apply the extended ACL outbound
 ```
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629000354152.png" alt="image-20240629063004156" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629000354152.png" alt="image-20240629063004156"  /> 
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063004156.png" alt="image-20240629063004156" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629063004156.png" alt="image-20240629063004156"  /> 
 
 ### OSPF
 
@@ -585,7 +585,7 @@ Which two changes stop outbound traffic on TCP ports 25 and 80 to 10.0.20.0/26 f
 
 **Explanation for B**: The main purpose of Server Virtualization is to run many VMs on the same physical server
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629051220833.png" alt="image-20240629051220833" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629051220833.png" alt="image-20240629051220833" /> 
 
 **Unique Local Address (ULA) - FC00::/8 and FD00::/8**
 
@@ -635,7 +635,7 @@ C is wrong as the purpose of FlexConnect is to provide local connectivity when t
 | Functionality without WLC           | Limited (cannot serve clients effectively) | Continues to serve clients, local switching           |
 | Control and Data Traffic Separation | Both tunneled to WLC                       | Control tunneled to WLC, data can be locally switched |
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629062058523.png" alt="image-20240629062058523" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629062058523.png" alt="image-20240629062058523"  /> 
 
 **Default STP Path Costs**: Cisco switches use specific default costs based on the bandwidth of the link:
 
@@ -669,15 +669,15 @@ interface GigabitEthernet0/0
  ip ospf 1 area 0
 ```
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063729580.png" alt="image-20240629063729580" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063729580.png" alt="image-20240629063729580"  />
 
 **Delay Calculation**: The delay value used in the metric calculation is not just the delay of the exiting interface. Instead, it is the cumulative delay of all the interfaces along the path to the destination.
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063812791.png" alt="image-20240629063812791" style="zoom:50%;" />
+<img src="https://han.blob.core.windows.net/typora/image-20240629063812791.png" alt="image-20240629063812791"  />
 
 ### Configuring the NTP Client
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629063857417.png" alt="image-20240629063857417" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629063857417.png" alt="image-20240629063857417"  /> 
 
 The NTP client is configured to synchronize its time with the NTP server. Here’s how to configure an NTP client:
 
@@ -689,7 +689,7 @@ ntp server <NTP_SERVER_IP>
 
 clock set 00:00:00 January 1 2020
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629064042718.png" alt="image-20240629064042718" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629064042718.png" alt="image-20240629064042718"  /> 
 
 ### VPN
 
@@ -716,7 +716,7 @@ Enabling the "allow AAA Override" option on a Cisco Wireless LAN Controller (WLC
 
 **Functionality**: By enabling the AAA Override, the WLC can dynamically assign VLANs, QoS profiles, and other policies based on the information provided by the AAA server. This is crucial for implementing role-based access control and dynamic VLAN assignments.
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629065958197.png" alt="image-20240629065958197" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629065958197.png" alt="image-20240629065958197"  /> 
 
 [Question](https://www.examtopics.com/discussions/cisco/view/110564-exam-200-301-topic-1-question-307-discussion): Refer to the exhibit. A network engineer must update the configuration on Switch2 so that it sends LLDP packets every minute and the information sent via LLDP is refreshed every 3 minutes. Which configuration must the engineer apply?
 
@@ -767,7 +767,7 @@ This is the correct answer because, in SDN, the controller acts as a central poi
 
 This is incorrect because the controller in SDN does not centralize the data plane. The data plane, which is responsible for forwarding traffic based on the instructions from the controller, remains distributed across the network devices. **The controller centralizes the control plane, not the data plane.** The control plane is where the decisions about where traffic should be sent are made, whereas the data plane is where the actual traffic forwarding happens.
 
-<img src="https://han.blob.core.windows.net/typora/image-20240629100334567.png" alt="image-20240629100334567" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240629100334567.png" alt="image-20240629100334567"  /> 
 
 第一題應該是 WLC,首先那兩個 AAA 服務器的答案肯定是錯的,因為兩個本質上就是相同的東西
 那就只剩 WLC 和 AP 了,然後題目那邊它有特別強調是 lightweight AP
@@ -1086,7 +1086,7 @@ In this scenario, each SSID is managed by a separate device. These devices may o
 - **Mobile Wi-Fi Device**: Broadcasting SSID "leo"
 - **Modem/Router 3**: Broadcasting SSID "yamaha_5G"
 
-<img src="https://han.blob.core.windows.net/typora/image-20240712063106522.png" alt="image-20240712063106522" style="zoom:50%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240712063106522.png" alt="image-20240712063106522"  /> 
 
 Each of these devices is likely configured independently, and the SSIDs do not necessarily correspond to VLANs unless explicitly set up to do so in a network configuration.
 

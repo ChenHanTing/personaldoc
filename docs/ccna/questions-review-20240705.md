@@ -145,7 +145,7 @@ ip nat inside source list 1 interface GigabitEthernet0/1 overload
 
 **Modify the configured number of the second access list:**This option does not seem relevant because there is only one access list in the current configuration.
 
-**Add either the ip nat {inside|outside} command under both interfaces:** This option is correct. The interfaces need to be correctly identified as inside or outside for NAT to function properly.
+**Add either the ip nat "inside|outside" command under both interfaces:** This option is correct. The interfaces need to be correctly identified as inside or outside for NAT to function properly.
 
 ![img](https://www.examtopics.com/assets/media/exam-media/04300/0024600001.jpg)
 

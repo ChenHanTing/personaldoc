@@ -2,16 +2,16 @@
 
 [Task](https://www.examtopics.com/discussions/cisco/view/106283-exam-200-301-topic-1-question-1059-discussion/): Three switches must be configured for Layer 2 connectivity. The company requires only the designated VLANs to be configured on their respective switches and permitted across any links between switches for security purposes. Do not modify or delete VTP configurations. The network needs two user-defined VLANs configured:
 
-````txt
+```txt
 VLAN 303: FINANCE
 VLAN 202: MARKETING
-````
+```
 
 1. Configure the VLANs on the designated switches and assign them as access ports to the interfaces connected to the PCs.
 2. Configure the e0/2 interfaces on Sw1 and Sw2 as 802.1q trunks with only the required VLANs permitted.
 3. Configure the e0/3 interfaces on Sw2 and Sw3 as 802.1q trunks with only the required VLANs permitted.
 
-![](https://img.examtopics.com/200-301/image123.png) 
+![](https://img.examtopics.com/200-301/image123.png)
 
 To configure the switches according to the requirements, we will follow these steps:
 
@@ -94,17 +94,19 @@ SW3(config-if)# exit
 Summary of Configurations:
 
 1. **SW1**:
-    - VLAN 303 (FINANCE) is created and assigned to interface e0/1.
-    - Interface e0/2 is configured as a trunk allowing VLANs 202 and 303.
+
+   - VLAN 303 (FINANCE) is created and assigned to interface e0/1.
+   - Interface e0/2 is configured as a trunk allowing VLANs 202 and 303.
 
 2. **SW2**:
-    - VLAN 202 (MARKETING) is created and assigned to interface e0/1.
-    - Interfaces e0/2 and e0/3 are configured as trunks allowing VLANs 202 and 303.
+
+   - VLAN 202 (MARKETING) is created and assigned to interface e0/1.
+   - Interfaces e0/2 and e0/3 are configured as trunks allowing VLANs 202 and 303.
 
 3. **SW3**:
-    - VLANs 202 (MARKETING) and 303 (FINANCE) are created.
-    - VLAN 202 is assigned to interface e0/0 and VLAN 303 to interface e0/1.
-    - Interface e0/3 is configured as a trunk allowing VLANs 202 and 303.
+   - VLANs 202 (MARKETING) and 303 (FINANCE) are created.
+   - VLAN 202 is assigned to interface e0/0 and VLAN 303 to interface e0/1.
+   - Interface e0/3 is configured as a trunk allowing VLANs 202 and 303.
 
 ---
 
@@ -115,7 +117,7 @@ Summary of Configurations:
 3. Configure the trunk link with 802.1q tags.
 4. Configure VLAN 'MONITORING' as the **untagged VLAN** of the EtherChannel.
 
-![](https://img.examtopics.com/200-301/image107.png) 
+![](https://img.examtopics.com/200-301/image107.png)
 
 SW1 Configuration:
 
@@ -155,12 +157,12 @@ SW2(config-if)# switchport trunk native vlan 100
 SW2(config-if)# exit
 ```
 
-Assuming VLAN ID for 'MONITORING' is 100 (replace 100 with the actual VLAN ID if different). 
+Assuming VLAN ID for 'MONITORING' is 100 (replace 100 with the actual VLAN ID if different).
 What if we need to find a real vlan instead of assuming a vlan?
 
 To find the actual VLAN ID for a VLAN named "MONITORING," you can use the `show vlan brief` command on a Cisco switch. This command will list all VLANs along with their IDs and names. Here’s how you can do it:
 
-````txt
+```txt
 SW1# show vlan brief
 
 VLAN Name                             Status    Ports
@@ -169,18 +171,18 @@ VLAN Name                             Status    Ports
 10   MANAGEMENT                       active    Gi0/3, Gi0/4
 20   SALES                            active    Gi0/5, Gi0/6
 100  MONITORING                       active    Gi0/7, Gi0/8
-````
+```
 
 In the example above, the VLAN ID for "MONITORING" is `100`.
 
-‼️Notion 1.  Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
+‼️Notion 1. Always set the encapsulation method before setting the port to trunk mode. The commands must be in the order shown above to ensure proper configuration.
 
-````txt
+```txt
 SW# configure terminal
 SW(config)# interface ethernet0/0
 SW(config-if)# switchport trunk encapsulation dot1q
 SW(config-if)# switchport mode trunk
-````
+```
 
 If you try to set the port to trunk mode before the encapsulation type on certain switches, you might see an error like:
 
@@ -273,7 +275,7 @@ SW1(config-if)# exit
 
 It is advisable to configure trunk settings on the port-channel interface rather than the individual physical interfaces. This approach simplifies management and ensures consistent application of trunk settings across the aggregated link.
 
-![image-20240613170528866](https://han.blob.core.windows.net/typora/image-20240613170528866.png) 
+![image-20240613170528866](https://han.blob.core.windows.net/typora/image-20240613170528866.png)
 
 Configuring LACP EtherChannel Between SW1 and SW2 Task Details:
 
@@ -358,11 +360,9 @@ SW2# copy running-config startup-config
 
 These commands configure the LACP EtherChannel between SW1 and SW2, ensuring that both ends match and the necessary trunk settings are applied.
 
-
-
 [Task](https://www.examtopics.com/discussions/cisco/view/103866-exam-200-301-topic-1-question-1054-discussion/): All physical cabling between the two switches is installed. Configure the network connectivity between the switches using the designated VLANs and interfaces.
 
-![](https://img.examtopics.com/200-301/image115.png) 
+![](https://img.examtopics.com/200-301/image115.png)
 
 1. Configure VLAN 12 named Compute and VLAN 34 named Telephony where required for each task.
 2. Configure Ethernet0/1 on SW2 to use the existing VLAN named Available.
@@ -395,23 +395,24 @@ SW2(config-if)# switchport mode access
 SW2(config-if)# switchport access vlan <Available VLAN ID>
 SW2(config-if)# exit
 ```
-(Replace `<Available VLAN ID>` with the actual VLAN ID for the Available VLAN.)
 
-````txt
+(Replace `Available VLAN ID` with the actual VLAN ID for the Available VLAN.)
+
+```txt
 //First we must find vlan number of Available vlan
 "show vlan name Available" or "show vlan" or "show vlan brief"
 interface e0/1 > sw mo ac > sw ac vlan x
-````
+```
 
 About the following commands are wrong. On Cisco switches, the `switchport access vlan` command requires the VLAN ID, not the VLAN name. Using the VLAN name directly in the command will result in an error. You need to specify the VLAN ID that corresponds to the VLAN named "Available."
 
-````txt
+```txt
 int e0/1
 switchport mode access
 switchport access vlan Available ❌
 no cdp enable
 no shutdown
-````
+```
 
 Configure the connection between the switches using access ports.
 
@@ -450,6 +451,7 @@ SW2(config-if)# exit
 Summary of the Configuration:
 
 1. **Create VLANs 12 and 34 on both switches:**
+
    - VLAN 12 named Compute
    - VLAN 34 named Telephony
 
@@ -458,11 +460,9 @@ Summary of the Configuration:
 4. **Set Ethernet0/1 on SW1 to use VLAN 12 for data and VLAN 34 for voice.**
 5. **Disable CDP on Ethernet0/1 on SW2.**
 
-
-
 [Task](https://www.examtopics.com/discussions/cisco/view/106379-exam-200-301-topic-1-question-1072-discussion/): IP connectivity and OSPF are preconfigured on all devices where necessary. Do not make any changes to the IP addressing or OSPF. The company policy uses connected interfaces and next hops when configuring static routes except for load balancing or redundancy without floating static. Connectivity must be established between subnet 172.20.20.128/25 on the Internet and the LAN at 192.168.0.0/24 connected to SW1:
 
-![](https://img.examtopics.com/200-301/image146.png) 
+![](https://img.examtopics.com/200-301/image146.png)
 
 1. Configure **reachability** to the switch SW1 LAN subnet in router R2.
 2. Configure **default reachability** to the Internet subnet in router R1.
@@ -485,18 +485,18 @@ R1(config)# ip route 0.0.0.0 0.0.0.0 10.10.13.3
 
 3. Configure a single static route in router R2 to reach the Internet subnet considering both redundant links between routers R1 and R2. A default route is NOT allowed in router R2.
 
-- **Primary Route:** 
+- **Primary Route:**
 
-  ````txt
+  ```txt
   R2(config)# ip route 172.20.20.128 255.255.255.128 10.10.12.129
-  ````
+  ```
 
-- **Backup Route with Higher Administrative Distance:** 
+- **Backup Route with Higher Administrative Distance:**
   This sets up the primary static route with the next hop `10.10.12.129.`
 
-  ````txt
+  ```txt
   R2(config)# ip route 172.20.20.128 255.255.255.128 10.10.13.1 10
-  ````
+  ```
 
 This sets up a secondary static route with the next hop `10.10.12.130` and an administrative distance of 10, making it less preferred than the primary route.
 
@@ -508,16 +508,15 @@ R1(config)# ip route 192.168.0.0 255.255.255.0 10.10.12.130 2
 ```
 
 This setup ensures that:
+
 - Router R2 can reach the LAN subnet connected to SW1.
 - Router R1 has a default route pointing to the Internet via R2.
 - Router R2 has a static route to the Internet subnet using both redundant links between R1 and R2.
 - Router R1 has a primary static route to the SW1 LAN subnet through Ethernet0/1 and a backup route through Ethernet0/2.
 
-<div style="page-break-after: always;"></div>
-
 [Question](https://www.examtopics.com/discussions/cisco/view/106359-exam-200-301-topic-1-question-1060-discussion/): Refer to the topology. All physical cabling is in place. Configure a local user account, a Named ACL (NACL), and security.
 
-![](https://img.examtopics.com/200-301/image128.png) 
+![](https://img.examtopics.com/200-301/image128.png)
 
 Task 1
 Configure a local account on Sw101 with telnet access only on virtual ports 0-4. Use the following information:
@@ -577,7 +576,7 @@ interface vlan 200
   ip access-group ENT_ACL in
 end
 
-wr 
+wr
 ```
 
 Task 3: Configure Security on Interface Ethernet 0/0 of Sw102
@@ -598,10 +597,6 @@ switchport port-security mac-address sticky
 end
 ```
 
-<div style="page-break-after: always;"></div>
-
-
-
 [Question](https://www.examtopics.com/discussions/cisco/view/123310-exam-200-301-topic-1-question-1175-discussion/#): R1 has been pre-configured with all the necessary commands. All physical cabling is in place and verified. Connectivity from PC1, PC3, and the Server must be established to the switches, and each port must only allow one VLAN.
 
 1. Configure the VLAN connecting to the switch port for PC3 with the name "SALES"
@@ -609,9 +604,9 @@ end
 3. Configure the switch port connecting to PC3
 4. Ensure R1 discovers SW-1 via the Cisco proprietary neighbor discovery protocol and all other devices on the network are unable to discover SW-1
 
-![](https://img.examtopics.com/200-301/image239.png) 
+![](https://img.examtopics.com/200-301/image239.png)
 
-````
+```
 1.
 sw-2#conf t
 sw-2(config)#vlan 20
@@ -649,9 +644,9 @@ sw-1(config-if)#end
 sw-1#wr
 
 to end, you can use a show cdp neig in R1 and SW-2
-````
+```
 
-````txt
+```txt
 Task 1
 SW-2(config)#vlan 30
 SW-2(config-vlan)#name SALES
@@ -680,7 +675,7 @@ D - Remote, C - CVTA, M - Two-port Mac Relay
 
 Device ID Local Intrfce Holdtme Capability Platform Port ID
 R1 Gig 0/0 145 R B Gig 0/0.1
-````
+```
 
 Step 1: Configure the VLAN connecting to the switch port for PC3 with the name "SALES"
 
@@ -723,7 +718,7 @@ SW-1(config-if)# exit
 
 extend: What if i want to use lldp rather than cdp
 
-````txt
+```txt
 SW-1(config)# lldp run
 SW-2(config)# lldp run
 R1(config)# lldp run
@@ -747,20 +742,18 @@ R1(config)# interface range e0/0 - 1
 R1(config-if-range)# lldp transmit
 R1(config-if-range)# lldp receive
 R1(config-if-range)# exit
-````
-
-<div style="page-break-after: always;"></div>
+```
 
 [Question](https://www.examtopics.com/discussions/cisco/view/123128-exam-200-301-topic-1-question-1178-discussion/#): All physical cabling is in place. Routers R3 and R4 are fully configured and inaccessible. Configure static routes for various connectivity to the ISP and the LAN that resides on R4.
 
-![](https://img.examtopics.com/200-301/image243.png) 
+![](https://img.examtopics.com/200-301/image243.png)
 
 1. Configure a route on R1 to ensure that R1 prefers R2 when traffic is destined to the server only.
 2. Configure a default route on R2 to the ISP
 3. Configure a route on R1 to ensure that R1 will use R2 for the R4 LAN if the link fails between R3 and R4
 4. Configure a route on R1 to ensure that R1 prefers R3 when traffic is destined to the R4 LAN at 10.0.41.0/24
 
-````txt
+```txt
 R1(config)#ip route 10.0.41.10 255.255.255.255 e0/0
 R1(config)#ip route 10.0.41.0 255.255.255.0 e0/0 201
 R1(config)#ip route 10.0.41.0 255.255.255.0 e0/1
@@ -773,24 +766,22 @@ Note:
 
 1. 201 is a safer AD; it's greater than the default distance value for any possible DRP. 200 is the value for IBGP.
 2. I specified the interfaces instead of the next-hop addresses. It's easier, and works fine for IPv4.
-````
+```
 
-````txt
+```txt
 R1
 Task1-ip route 10.0.41.10 255.255.255.255 10.0.12.2
 Task3-ip route 10.0.41.0 255.255.255.0 10.0.12.2 10
 Task4-ip route 10.0.41.0 255.255.255.0 10.0.13.2
 R2
 Task2-ip route 0.0.0.0 0.0.0.0 209.165.200.225
-````
+```
 
 > I think the answer is fine, but it is assuming that those are indeed the next hop addresses and it is not specified in the diagram. To be safe, I would put the exit interface number as Next Hop. Same with the administrative distance for the floating route, 200 is fine, but it can also be any other number.
 
-
-
 [Question](https://www.examtopics.com/discussions/cisco/view/103854-exam-200-301-topic-1-question-1043-discussion/#): Connectivity between four routers has been established. IP connectivity must be configured in the order presented to complete the implementation. No dynamic routing protocols are included.
 
-![](https://img.examtopics.com/200-301/image108.png) 
+![](https://img.examtopics.com/200-301/image108.png)
 
 1. Configure static routing using host routes to establish connectivity from router R3 to the router R1 Loopback address using the source IP of 209.165.200.230.
 2. Configure an IPv4 default route on router R2 destined for router R4.
@@ -816,11 +807,9 @@ Step 3: Configure an IPv6 default router on router R2 destined for router R4.
 R2(config)# ipv6 route ::/0 2001:db8:abcd::2
 ```
 
-<div style="page-break-after: always;"></div>
-
 [Question](https://www.examtopics.com/discussions/cisco/view/132429-exam-200-301-topic-1-question-808-discussion/#): physical cabling is in place and verified. Connectivity between all four switches must be established and operational. All ports are pre-configured as 802.1q trunks.
 
-![img](https://img.examtopics.com/200-301/image331.png) 
+![img](https://img.examtopics.com/200-301/image331.png)
 
 1. Configure both SW-1 and SW-2 ports e0/1 and e0/2 to permit only the allowed VLANs
 2. Configure both SW-3 and SW-4 ports e0/2 to permit only the allowed VLANs
@@ -890,11 +879,9 @@ SW-4(config-if)# exit
 
 This configuration sets up link aggregation (EtherChannel) on these ports with negotiation.
 
-<div style="page-break-after: always;"></div>
-
 [Question](https://www.examtopics.com/discussions/cisco/view/119705-exam-200-301-topic-1-question-1134-discussion/): IP connectivity between the three routers is configured. OSPF adjacencies must be established.
 
-![](https://img.examtopics.com/200-301/image206.png)  
+![](https://img.examtopics.com/200-301/image206.png)
 
 1. Configure R1 and R2 Router IDs using the interface IP addresses from the link that is shared between them.
 2. Configure the R2 links with a max value facing R1 and R3. R2 must become the DR. R1 and R3 links facing R2 must remain with the default OSPF configuration for DR election. Verify the configuration after clearing the OSPF process.
@@ -928,7 +915,7 @@ R2(config)# interface Ethernet0/1
 R2(config-if)# ip ospf priority 255
 ```
 
-Verify the configuration after clearing the OSPF process  on all routers to force the DR election:
+Verify the configuration after clearing the OSPF process on all routers to force the DR election:
 
 ```bash
 R2# clear ip ospf process
@@ -987,11 +974,9 @@ Check the OSPF routes to verify the Loopback1 networks are advertised:
 show ip route ospf
 ```
 
-<div style="page-break-after: always;"></div>
-
 [Question](https://www.examtopics.com/discussions/cisco/view/106281-exam-200-301-topic-1-question-1058-discussion/): Configure IPv4 and IPv6 connectivity between two routers. For IPv4, use a /28 network from the 192.168.180.0/24 private range. For IPv6, use the first /64 subnet from the 2001:0db8:acca::/48 subnet.
 
-![](https://img.examtopics.com/200-301/image119.png) 
+![](https://img.examtopics.com/200-301/image119.png)
 
 1. Using Ethernet0/1 on routers R1 and R2, configure the next usable /28 from the 192.168.180.0/24 range. The network 192.168.180.0/28 is unavailable.
 2. For the IPv4 /28 subnet, router R1 must be configured with the first usable host address.
@@ -1035,11 +1020,9 @@ ping 192.168.180.17
 ping 2001:db8:acca::1
 ```
 
-<div style="page-break-after: always;"></div>
-
 [Question](https://www.examtopics.com/discussions/cisco/view/133217-exam-200-301-topic-1-question-1310-discussion/): All physical cabling is in place and verified. Router R1 is configured and passing traffic for VLANs 5 and 6. All relevant ports are pre-configured as 802.1q trunks.
 
-![](https://img.examtopics.com/200-301/image344.png) 
+![](https://img.examtopics.com/200-301/image344.png)
 
 1. Configure SW-1 port E0/0 to permit only VLANS 5 and 6
 2. Configure both SW-1 and SW-2's E0/1 ports to send and receive untagged traffic over VLAN 77
@@ -1141,11 +1124,9 @@ This configuration ensures that:
 
 Ensure to save the configuration on all switches using the `write memory` command to make the changes persistent.
 
-<div style="page-break-after: always;"></div>
-
 [Question](https://www.examtopics.com/discussions/cisco/view/130729-exam-200-301-topic-1-question-1285-discussion/): All physical cabling is in place and verified. Switch SW-1 is pre-configured and inaccessible. SW-2 and SW-3 ports must be configured and operational to complete the configuration.
 
-![](https://img.examtopics.com/200-301/image319.png) 
+![](https://img.examtopics.com/200-301/image319.png)
 
 1. Configure SW-2 and SW-3 ports E0/0 to use the industry standard encapsulation method for trunking and only tag VLAN 10
 2. Configure SW-2 and SW-3 ports E0/0 to send and receive untagged traffic over VLAN 11
@@ -1174,7 +1155,7 @@ SW-3(config-if)# switchport trunk allowed vlan 10
 SW-3(config-if)# exit
 ```
 
-![image-20240708144720759](https://han.blob.core.windows.net/typora/image-20240708144720759.png) 
+![image-20240708144720759](https://han.blob.core.windows.net/typora/image-20240708144720759.png)
 
 ‼️ The error i'm encountering indicates that the `switchport trunk encapsulation dot1q` command is not recognized. This might happen for a few reasons, primarily related to the switch model and IOS version i'm using. On some Cisco switches, particularly newer models, the trunk encapsulation is fixed to `dot1q` and does not need to be specified explicitly.
 
@@ -1257,11 +1238,9 @@ Verify Configuration
    SW-3# show vlan brief
    ```
 
-<div style="page-break-after: always;"></div>
-
 [Question](https://www.examtopics.com/discussions/cisco/view/102890-exam-200-301-topic-1-question-1052-discussion/#): Connectivity between three routers has been established, and IP services must be configured in the order presented to complete the implementation. Tasks assigned include configuration of NAT, NTP, DHCP, and SSH services.
 
-![](https://img.examtopics.com/200-301/image113.png) 
+![](https://img.examtopics.com/200-301/image113.png)
 
 1. All traffic sent from R3 to the R1 Loopback address must be configured for NAT on R2. All source addresses must be translated from R3 to the IP address of Ethernet0/0 on R2, while using only a standard access list named **PUBNET**. To verify, a ping must be successful to the R1 Loopback address sourced from R3. **Do not use NVI NAT configuration.**
 2. Configure R1 as an NTP server and R2 as a client, not as a peer, using the IP address of the R1 Ethernet0/2 interface. Set the clock on the NTP server for midnight on May 1, 2018.
@@ -1270,7 +1249,7 @@ Verify Configuration
 
 General Overview
 
-````txt
+```txt
 NAT:
 R2(config)# ip access list standard PUBNET
 👀(e0/1 from R3) R2(config-std-nacl)# permit 10.2.3.3
@@ -1314,7 +1293,7 @@ R3(config-line)# log loc
 R3(config-line)# exit
 R3(config)# ip dom-name cisco.com
 R3(config)# cry key gen rsa mod 2048
-````
+```
 
 [Question](https://www.examtopics.com/discussions/cisco/view/128567-exam-200-301-topic-1-question-1258-discussion/): R1 and R2 are pre-configured with all the necessary commands. All physical cabling is in place and verified. Connectivity for PC1 and PC2 must be established to the switches; each port must only allow one VLAN and be operational.
 
@@ -1324,9 +1303,9 @@ R3(config)# cry key gen rsa mod 2048
 4. Configure the switch port connecting to PC2
 5. Configure the E0/2 connections on SW-1 and SW-2 for neighbor discovery using the **vendor-neutral standard protocol** and ensure that E0/0 on both switches uses the **Cisco proprietary protocol**
 
-![](https://img.examtopics.com/200-301/image286.png) 
+![](https://img.examtopics.com/200-301/image286.png)
 
-````txt 
+```txt
 Task 1:
 Sw1(config)#vl 15
 Sw1(config-vlan)#name OPS
@@ -1365,7 +1344,7 @@ Switch(config-if)#cdp enable
 end
 
 copy r st
-````
+```
 
 Configuration Comparison between 801.1q and ISL:
 
@@ -1390,7 +1369,7 @@ Switch(config-if)# switchport mode trunk
 
 ### Questions with Screenshot
 
-<img src="https://han.blob.core.windows.net/typora/image-20240613170429555.png" alt="image-20240613170429555" style="zoom:60%;" />  
+<img src="https://han.blob.core.windows.net/typora/image-20240613170429555.png" alt="image-20240613170429555" />
 
 Static Routing Configuration for End-to-End Connectivity Task Details:
 
@@ -1401,6 +1380,7 @@ Static Routing Configuration for End-to-End Connectivity Task Details:
 Step 1: Configure Static Routes on R1
 
 1. **Enter Configuration Mode**:
+
    ```shell
    R1# configure terminal
    ```
@@ -1410,7 +1390,6 @@ Step 1: Configure Static Routes on R1
    ❌R1(config)# ip route 10.0.41.0 255.255.255.0 10.0.12.3
    ✅R1(config)# ip route 10.0.41.10 255.255.255.255 e0/0
    ```
-   
 3. **Add Static Route for Secondary Path (via R3)**:
    ```shell
    ❌ R1(config)# ip route 10.0.41.0 255.255.255.0 10.0.13.2 10
@@ -1427,6 +1406,7 @@ Step 2: Configure Default Route on R1
 Step 3: Configure Static Routes on R3
 
 1. **Enter Configuration Mode**:
+
    ```shell
    R3# configure terminal
    ```
@@ -1461,9 +1441,9 @@ Explanation
 - **Default Route on R1**: The default route points to the ISP through the next hop IP 209.165.201.2.
 - **Default Route on R3**: The default route points to the ISP through the next hop IP 209.165.201.1.
 
- <img src="https://han.blob.core.windows.net/typora/image-20240613170614754.png" alt="image-20240613170614754" style="zoom:40%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240613170614754.png" alt="image-20240613170614754" />
 
-<img src="https://han.blob.core.windows.net/typora/image-20240614083622370.png" alt="image-20240614083622370" style="zoom:40%;" /> 
+<img src="https://han.blob.core.windows.net/typora/image-20240614083622370.png" alt="image-20240614083622370" />
 
 Task 1: Configure a Local Account on Sw103
 **Switch Configuration Mode**:
@@ -1479,27 +1459,28 @@ Switch(config-line)# login local
 Task 2: Modify the Named ACL (INTERNET_ACL)
 
 1. **Allow HTTPS from 172.16.0.0/16**:
-   
+
    ```shell
    R1# configure terminal
    R1(config)# ip access-list extended INTERNET_ACL
    R1(config-ext-nacl)# permit tcp 172.16.0.0 0.0.255.255 any eq https
    ```
-   
+
 2. **Allow Telnet Only for VLAN 101**:
+
    ```shell
    R1(config-ext-nacl)# permit tcp any 172.16.101.0 0.0.0.255 eq telnet
    ```
 
    To reflect the requirements of allowing HTTPS traffic from the 172.16.0.0/16 subnet and Telnet traffic to the 172.16.101.0/24 subnet on a Cisco device, you would configure an extended access control list (ACL) like this
 
-   ````text
+   ```text
    R1# configure terminal
    R1(config)# ip access-list extended INTERNET_ACL
    R1(config-ext-nacl)# permit tcp 172.16.0.0 0.0.255.255 any eq 443
    R1(config-ext-nacl)# permit tcp any 172.16.101.0 0.0.0.255 eq 23
    R1(config-ext-nacl)# deny ip any any log
-   ````
+   ```
 
 3. **Restrict All Other Traffic and Log Details**:
 

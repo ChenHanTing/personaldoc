@@ -26,7 +26,7 @@ In 802.1q double-tagging attacks, an attacker sends a packet with two VLAN tags.
 
   The service port on devices like a Wireless LAN Controller (WLC) is typically used for out-of-band management. This port is separate from the main data network and provides a way to manage the device even if the main network is down.
 
-  <img src="https://i.ytimg.com/vi/jhsjfOSBeiA/maxresdefault.jpg" alt="image-20240629063004156" style="zoom:50%;" /> 
+  <img src="https://i.ytimg.com/vi/jhsjfOSBeiA/maxresdefault.jpg" alt="image-20240629063004156" /> 
 
   out-of-band management always plays as a service port 
 
