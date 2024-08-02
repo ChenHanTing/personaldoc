@@ -4,6 +4,51 @@
  * work well for content-centric websites.
  */
 
+/* Define the font-face for local fonts */
+@font-face {
+  font-family: "NotoSerifTC";
+  src: url("/fonts/NotoSerifTC-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito-Italic";
+  src: url("/fonts/Nunito-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the local font globally */
+body {
+  font-family: Nunito, "NotoSerifTC", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Nunito, "NotoSerifTC", sans-serif;
+}
+
+/* Apply Nunito-Italic when the text is italic */
+i,
+em,
+.italic,
+.custom-italic-class {
+  font-family: "Nunito-Italic", sans-serif;
+  font-style: italic;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
@@ -18,7 +63,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
