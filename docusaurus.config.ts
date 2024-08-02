@@ -61,7 +61,7 @@ const config: Config = {
       title: "My Site",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
+        src: "img/woo-flower.png",
       },
       items: [
         {
@@ -72,7 +72,7 @@ const config: Config = {
         },
         { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/ChenHanTing",
           label: "GitHub",
           position: "right",
         },

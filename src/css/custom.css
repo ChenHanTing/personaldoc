@@ -83,3 +83,29 @@ em,
     0.3
   ); /* Soft light brown */
 }
+
+.navbar__logo {
+  /* Define the size of the circle */
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+
+  /* Center the image within the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Create a circular background */
+  background-color: #9b8575; /* Change to desired background color */
+  border-radius: 50%;
+
+  /* Optionally add border and shadow */
+  border: 2px solid #8a7868; /* Adjust color to match your design */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.logo-image {
+  /* Ensure the image fits within the circle */
+  max-width: 80%; /* Adjust to control image size relative to the circle */
+  max-height: 80%; /* Maintain aspect ratio */
+  border-radius: 50%; /* Optional, makes the image itself rounded */
+}
