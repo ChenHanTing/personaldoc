@@ -4,27 +4,108 @@
  * work well for content-centric websites.
  */
 
+/* Define the font-face for local fonts */
+@font-face {
+  font-family: "NotoSerifTC";
+  src: url("/fonts/NotoSerifTC-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito-Italic";
+  src: url("/fonts/Nunito-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the local font globally */
+body {
+  font-family: Nunito, "NotoSerifTC", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Nunito, "NotoSerifTC", sans-serif;
+}
+
+/* Apply Nunito-Italic when the text is italic */
+i,
+em,
+.italic,
+.custom-italic-class {
+  font-family: "Nunito-Italic", sans-serif;
+  font-style: italic;
+}
+
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #9b8575; /* Main earthy brown */
+  --ifm-color-primary-dark: #8a7868; /* Darker earthy brown */
+  --ifm-color-primary-darker: #7a6b5b; /* Even darker brown */
+  --ifm-color-primary-darkest: #6a5d4f; /* Darkest brown */
+  --ifm-color-primary-light: #ad9987; /* Lighter brown */
+  --ifm-color-primary-lighter: #bda896; /* Lightest brown */
+  --ifm-color-primary-lightest: #cbb7a5; /* Very light brown/beige */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(
+    153,
+    132,
+    123,
+    0.1
+  ); /* Soft brown */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+[data-theme="dark"] {
+  --ifm-color-primary: #d3b49f; /* Light creamy brown */
+  --ifm-color-primary-dark: #bfa393; /* Dark creamy brown */
+  --ifm-color-primary-darker: #aa9186; /* Darker creamy brown */
+  --ifm-color-primary-darkest: #957e79; /* Darkest creamy brown */
+  --ifm-color-primary-light: #e2c5b0; /* Lighter cream */
+  --ifm-color-primary-lighter: #e9cdb7; /* Even lighter cream */
+  --ifm-color-primary-lightest: #f0d6be; /* Lightest cream */
+  --docusaurus-highlighted-code-line-bg: rgba(
+    171,
+    147,
+    132,
+    0.3
+  ); /* Soft light brown */
+}
+
+.navbar__logo {
+  /* Define the size of the circle */
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+
+  /* Center the image within the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Create a circular background */
+  background-color: #9b8575; /* Change to desired background color */
+  border-radius: 50%;
+
+  /* Optionally add border and shadow */
+  border: 2px solid #8a7868; /* Adjust color to match your design */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.logo-image {
+  /* Ensure the image fits within the circle */
+  max-width: 80%; /* Adjust to control image size relative to the circle */
+  max-height: 80%; /* Maintain aspect ratio */
+  border-radius: 50%; /* Optional, makes the image itself rounded */
 }
