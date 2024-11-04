@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>File Encryption/Decryption</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e8f5e9; /* Light green background */
+        color: #2e7d32; /* Dark green text */
+        text-align: center;
+        padding: 50px;
+      }
+      h1 {
+        color: #1b5e20; /* Darker green for the heading */
+      }
+      input[type="file"],
+      input[type="password"] {
+        display: block;
+        margin: 20px auto;
+        padding: 10px;
+        border: 2px solid #2e7d32;
+        border-radius: 5px;
+        width: 80%;
+        max-width: 400px;
+      }
+      button {
+        background-color: #4caf50; /* Green button background */
+        color: white;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #388e3c; /* Darker green on hover */
+      }
+      #downloadLink {
+        display: block;
+        margin-top: 20px;
+        color: #1b5e20;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      #downloadLink:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>File Encryption/Decryption</h1>
+    <input type="file" id="fileInput" />
+    <input type="password" id="passwordInput" placeholder="Enter password" />
+    <button onclick="encryptFile()">Encrypt</button>
+    <button onclick="decryptFile()">Decrypt</button>
+    <a id="downloadLink" style="display: none">Download</a>
+
+    <script>
+      async function getKeyMaterial(password) {
+        const enc = new TextEncoder();
+        return window.crypto.subtle.importKey(
+          "raw",
+          enc.encode(password),
+          "PBKDF2",
+          false,
+          ["deriveKey"]
+        );
+      }
+
+      async function getKey(keyMaterial, salt) {
+        return window.crypto.subtle.deriveKey(
+          {
+            name: "PBKDF2",
+            salt: salt,
+            iterations: 100000,
+            hash: "SHA-256",
+          },
+          keyMaterial,
+          { name: "AES-GCM", length: 256 },
+          false,
+          ["encrypt", "decrypt"]
+        );
+      }
+
+      async function encryptFile() {
+        const fileInput = document.getElementById("fileInput");
+        const passwordInput = document.getElementById("passwordInput");
+        const downloadLink = document.getElementById("downloadLink");
+
+        if (!fileInput.files.length || !passwordInput.value) {
+          alert("Please select a file and enter a password.");
+          return;
+        }
+
+        const file = fileInput.files[0];
+        const password = passwordInput.value;
+
+        const arrayBuffer = await file.arrayBuffer();
+        const salt = window.crypto.getRandomValues(new Uint8Array(16));
+        const iv = window.crypto.getRandomValues(new Uint8Array(12));
+
+        const keyMaterial = await getKeyMaterial(password);
+        const key = await getKey(keyMaterial, salt);
+
+        const encryptedContent = await window.crypto.subtle.encrypt(
+          {
+            name: "AES-GCM",
+            iv: iv,
+          },
+          key,
+          arrayBuffer
+        );
+
+        const encryptedBlob = new Blob(
+          [salt, iv, new Uint8Array(encryptedContent)],
+          {
+            type: "application/octet-stream",
+          }
+        );
+        const url = URL.createObjectURL(encryptedBlob);
+
+        downloadLink.href = url;
+        downloadLink.download = `${file.name}.enc`;
+        downloadLink.style.display = "block";
+        downloadLink.textContent = "Download Encrypted File";
+      }
+
+      async function decryptFile() {
+        const fileInput = document.getElementById("fileInput");
+        const passwordInput = document.getElementById("passwordInput");
+        const downloadLink = document.getElementById("downloadLink");
+
+        if (!fileInput.files.length || !passwordInput.value) {
+          alert("Please select a file and enter a password.");
+          return;
+        }
+
+        const file = fileInput.files[0];
+        const password = passwordInput.value;
+
+        const arrayBuffer = await file.arrayBuffer();
+        const salt = new Uint8Array(arrayBuffer.slice(0, 16));
+        const iv = new Uint8Array(arrayBuffer.slice(16, 28));
+        const data = arrayBuffer.slice(28);
+
+        const keyMaterial = await getKeyMaterial(password);
+        const key = await getKey(keyMaterial, salt);
+
+        try {
+          const decryptedContent = await window.crypto.subtle.decrypt(
+            {
+              name: "AES-GCM",
+              iv: iv,
+            },
+            key,
+            data
+          );
+
+          const decryptedBlob = new Blob([decryptedContent], {
+            type: "application/octet-stream",
+          });
+          const url = URL.createObjectURL(decryptedBlob);
+
+          downloadLink.href = url;
+          downloadLink.download = file.name.replace(".enc", "");
+          downloadLink.style.display = "block";
+          downloadLink.textContent = "Download Decrypted File";
+        } catch (e) {
+          alert("Decryption failed. Check your password and try again.");
+        }
+      }
+    </script>
+  </body>
+</html>
